@@ -1,0 +1,28 @@
+﻿  Enemy.cpp
+C:\Users\Arek\source\repos\SFML-PROJEKT\SFML-PROJEKT\Enemy.cpp(23,11): warning C4101: "moveVectorY": lokalna zmienna, do której nie istnieje odwołanie
+C:\Users\Arek\source\repos\SFML-PROJEKT\SFML-PROJEKT\Enemy.cpp(22,11): warning C4101: "moveVectorX": lokalna zmienna, do której nie istnieje odwołanie
+  Game.cpp
+C:\Users\Arek\source\repos\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(108,94): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+C:\Users\Arek\source\repos\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(113,94): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+C:\Users\Arek\source\repos\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(118,102): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+C:\Users\Arek\source\repos\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(123,102): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+C:\Users\Arek\source\repos\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(189,27): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+  main.cpp
+  Generowanie kodu...
+  SFML-PROJEKT.vcxproj -> C:\Users\Arek\source\repos\SFML-PROJEKT\Debug\SFML-PROJEKT.exe
