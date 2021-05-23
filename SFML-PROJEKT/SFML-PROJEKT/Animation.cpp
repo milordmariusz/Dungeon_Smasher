@@ -6,7 +6,7 @@ Animation::Animation(sf::Texture* texture, sf::Vector2u imageCount, float switch
 	this->switchTime = switchTime;
 	totalTime = 0.0f;
 	currentImage.x = 0;
-
+	//setting size of frame
 	uvRect.width = texture->getSize().x / float(imageCount.x);
 	uvRect.height = texture->getSize().y / float(imageCount.y);
 }
@@ -16,7 +16,7 @@ Animation::~Animation()
 
 }
 
-void Animation::Update(int row, float deltaTime)
+void Animation::Update(int row, float deltaTime) //animation algorithm (change frame every time and set to frist after last frame
 {
 	currentImage.y = row;
 	totalTime += deltaTime;

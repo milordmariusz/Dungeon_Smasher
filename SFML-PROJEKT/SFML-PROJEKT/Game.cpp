@@ -3,14 +3,48 @@
 void Game::initVariables() //Initialize variables
 {
 	this->window = nullptr;
-
 	this->endGame = false;
-	this->points = 0;
+	this->points = 100;
 	this->health = 20;
-	this->enemySpawnTimerMax = 100.f;
+	this->enemySpawnTimerMax = 35.f;
 	this->enemySpawnTimer = this->enemySpawnTimerMax;
-	this->maxEnemies = 8;
+	this->maxEnemies = 10;
 	this->mouseHeld = false;
+	//zombie
+	this->zombieBaseSpeed = 50.0f;
+	this->zombieAnimationSpeed = 1 / zombieBaseSpeed * 16;
+	this->zombieValue = 5.0f;
+	this->zombieAttackValue = 1;
+	//centaur
+	this->centaurBaseSpeed = 110.0f;
+	this->centaurAnimationSpeed = 1 / centaurBaseSpeed * 16;
+	this->centaurValue = 20.0f;
+	this->centaurAttackValue = 1;
+	//orc
+	this->orcBaseSpeed = 80.0f;
+	this->orcAnimationSpeed = 1 / orcBaseSpeed * 16;
+	this->orcValue = 15.0f;
+	this->orcAttackValue = 2;
+	//goblin
+	this->goblinBaseSpeed = 150.0f;
+	this->goblinAnimationSpeed = 1 / goblinBaseSpeed * 16;
+	this->goblinValue = 25.0f;
+	this->goblinAttackValue = 1;
+}
+
+void Game::initCenter() //Initialize center
+{
+	if (this->centerTexture.loadFromFile("background/center.png") == false) //Init walls
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load center.png" << std::endl;
+		this->center.setFillColor(Color(222, 33, 33));
+	}
+	else
+	{
+		center.setTexture(&centerTexture);
+	}
+	this->center.setSize(sf::Vector2f(36.0f, 36.0f));
+	this->center.setPosition(sf::Vector2f(622.0f, 350.0f));
 }
 
 void Game::initWindow() //Initialize window
@@ -92,39 +126,161 @@ void Game::initBackground() //Initialize background
 	}
 }
 
-void Game::initEnemies() //Initialize enemies
+void Game::initEnemies() //Initialize enemies - load all textures
 {
-	if (this->zombieTexture.loadFromFile("enemies/zombie.png") == false) //Init walls
+	if (this->zombieWalkTexture.loadFromFile("enemies/zombieWalk.png") == false) //Init zombieWalk
 	{
-		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture zombie.png" << std::endl;
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture zombieWalk.png" << std::endl;
+	}
+	if (this->zombieAttackTexture.loadFromFile("enemies/zombieAttack.png") == false) //Init zombieAttack
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture zombieAttack.png" << std::endl;
+	}
+	if (this->zombieHitTexture.loadFromFile("enemies/zombieHit.png") == false) //Init zombieHit
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture zombieHit.png" << std::endl;
+	}
+	if (this->centaurWalkTexture.loadFromFile("enemies/centaurWalk.png") == false) //Init centaurWalk
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture centaurWalk.png" << std::endl;
+	}
+	if (this->centaurAttackTexture.loadFromFile("enemies/centaurAttack.png") == false) //Init centaurAttack
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture centaurAttack.png" << std::endl;
+	}
+	if (this->centaurHitTexture.loadFromFile("enemies/centaurHit.png") == false) //Init centaurHit
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture centaurHit.png" << std::endl;
+	}
+	if (this->orcWalkTexture.loadFromFile("enemies/orcWalk.png") == false) //Init orcWalk
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture orcWalk.png" << std::endl;
+	}
+	if (this->orcAttackTexture.loadFromFile("enemies/orcAttack.png") == false) //Init orcAttack
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture orcAttack.png" << std::endl;
+	}
+	if (this->orcHitTexture.loadFromFile("enemies/orcHit.png") == false) //Init orcHit
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture orcrHit.png" << std::endl;
+	}
+	if (this->goblinWalkTexture.loadFromFile("enemies/goblinWalk.png") == false) //Init goblinWalk
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture goblinWalk.png" << std::endl;
+	}
+	if (this->goblinAttackTexture.loadFromFile("enemies/goblinAttack.png") == false) //Init goblinWalk
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture goblinAttack.png" << std::endl;
+	}
+	if (this->goblinHitTexture.loadFromFile("enemies/goblinHit.png") == false) //Init goblinHit
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture goblinHit.png" << std::endl;
 	}
 }
 
-void Game::spawnEnemy() //Spawn enemy
+void Game::spawnEnemy() //Spawn enemy  
+/*
+Enemy name(walktexture, (number of walk frames x,number of walk frames y), attack texture, (number of attack frames x,number of attack frames y),hit texture, (number of hit frames x,number of hit frames y),
+ animation speed, speed of enemy, starting position, point value, attack value)
+*/
 {
-	int r0 = (rand() % 4); // Generate spawn side
-	if (r0 == 0)
+	int type = (rand() % 4); // Generate type of enemy 0-zombie 1-centaur 2-goblin 3-orc
+	int side = (rand() % 4); // Generate spawn side  0-top 1-bottom 2-left 3-right
+
+	switch (type)
 	{
-		Enemy zombie(&zombieTexture, sf::Vector2u(4, 4), 0.35f, 50.0f, sf::Vector2f((rand() % 544) + 368, 96.f));
-		this->enemies.push_back(zombie);
-	}
-	else if (r0 == 1)
-	{
-		Enemy zombie(&zombieTexture, sf::Vector2u(4, 4), 0.35f, 50.0f, sf::Vector2f((rand() % 544) + 368, 636.f));
-		this->enemies.push_back(zombie);
-	}
-	else if (r0 == 2)
-	{
-		Enemy zombie(&zombieTexture, sf::Vector2u(4, 4), 0.35f, 50.0f, sf::Vector2f(368.0f, (rand() % 448) + 160));
-		this->enemies.push_back(zombie);
-	}
-	else
-	{
-		Enemy zombie(&zombieTexture, sf::Vector2u(4, 4), 0.35f, 50.0f, sf::Vector2f(912.0f, (rand() % 448) + 128));
-		this->enemies.push_back(zombie);
+	case 0:
+		if (side == 0) // Top side zombie
+		{
+			Enemy zombie(&zombieWalkTexture, sf::Vector2u(4, 4), &zombieAttackTexture, sf::Vector2u(5, 4), &zombieHitTexture, sf::Vector2u(4, 4), zombieAnimationSpeed*animationSpeedMultiplier, zombieBaseSpeed*speedMultiplier, sf::Vector2f((rand() % 544) + 368, 96.f), zombieValue, zombieAttackValue);
+			this->enemies.push_back(zombie);
+		}
+		else if (side == 1) //Bottom side zombie
+		{
+			Enemy zombie(&zombieWalkTexture, sf::Vector2u(4, 4), &zombieAttackTexture, sf::Vector2u(5, 4), &zombieHitTexture, sf::Vector2u(4, 4), zombieAnimationSpeed * animationSpeedMultiplier, zombieBaseSpeed * speedMultiplier, sf::Vector2f((rand() % 544) + 368, 636.f), zombieValue, zombieAttackValue);
+			this->enemies.push_back(zombie);
+		}
+		else if (side == 2) //Left side zombie
+		{
+			Enemy zombie(&zombieWalkTexture, sf::Vector2u(4, 4), &zombieAttackTexture, sf::Vector2u(5, 4), &zombieHitTexture, sf::Vector2u(4, 4), zombieAnimationSpeed * animationSpeedMultiplier, zombieBaseSpeed * speedMultiplier, sf::Vector2f(368.0f, (rand() % 448) + 160), zombieValue, zombieAttackValue);
+			this->enemies.push_back(zombie);
+		}
+		else //Right side zombie
+		{
+			Enemy zombie(&zombieWalkTexture, sf::Vector2u(4, 4), &zombieAttackTexture, sf::Vector2u(5, 4), &zombieHitTexture, sf::Vector2u(4, 4), zombieAnimationSpeed * animationSpeedMultiplier, zombieBaseSpeed * speedMultiplier, sf::Vector2f(912.0f, (rand() % 448) + 128), zombieValue, zombieAttackValue);
+			this->enemies.push_back(zombie);
+		}
+		break;
+	case 1:
+
+		if (side == 0)// Top side centaur
+		{
+			Enemy centaur(&centaurWalkTexture, sf::Vector2u(4, 4), &centaurAttackTexture, sf::Vector2u(4, 4), &centaurHitTexture, sf::Vector2u(4, 4), centaurAnimationSpeed * animationSpeedMultiplier, centaurBaseSpeed * speedMultiplier, sf::Vector2f((rand() % 544) + 368, 96.f), centaurValue, centaurAttackValue);
+			this->enemies.push_back(centaur);
+		}
+		else if (side == 1)//Bottom side centaur
+		{
+			Enemy centaur(&centaurWalkTexture, sf::Vector2u(4, 4), &centaurAttackTexture, sf::Vector2u(4, 4), &centaurHitTexture, sf::Vector2u(4, 4), centaurAnimationSpeed * animationSpeedMultiplier, centaurBaseSpeed * speedMultiplier, sf::Vector2f((rand() % 544) + 368, 636.f), centaurValue, centaurAttackValue);
+			this->enemies.push_back(centaur);
+		}
+		else if (side == 2)//Left side centaur
+		{
+			Enemy centaur(&centaurWalkTexture, sf::Vector2u(4, 4), &centaurAttackTexture, sf::Vector2u(4, 4), &centaurHitTexture, sf::Vector2u(4, 4), centaurAnimationSpeed * animationSpeedMultiplier, centaurBaseSpeed * speedMultiplier, sf::Vector2f(368.0f, (rand() % 448) + 160), centaurValue, centaurAttackValue);
+			this->enemies.push_back(centaur);
+		}
+		else//Right side centaur
+		{
+			Enemy centaur(&centaurWalkTexture, sf::Vector2u(4, 4), &centaurAttackTexture, sf::Vector2u(4, 4), &centaurHitTexture, sf::Vector2u(4, 4), centaurAnimationSpeed * animationSpeedMultiplier, centaurBaseSpeed * speedMultiplier, sf::Vector2f(912.0f, (rand() % 448) + 128), centaurValue, centaurAttackValue);
+			this->enemies.push_back(centaur);
+		}
+		break;
+	case 2:
+		if (side == 0)// Top side goblin
+		{
+			Enemy goblin(&goblinWalkTexture, sf::Vector2u(4, 4), &goblinAttackTexture, sf::Vector2u(4, 4), &goblinHitTexture, sf::Vector2u(4, 4), goblinAnimationSpeed * animationSpeedMultiplier, goblinBaseSpeed * speedMultiplier, sf::Vector2f((rand() % 544) + 368, 96.f), goblinValue, goblinAttackValue);
+			this->enemies.push_back(goblin);
+		}
+		else if (side == 1)//Bottom side goblin
+		{
+			Enemy goblin(&goblinWalkTexture, sf::Vector2u(4, 4), &goblinAttackTexture, sf::Vector2u(4, 4), &goblinHitTexture, sf::Vector2u(4, 4), goblinAnimationSpeed * animationSpeedMultiplier, goblinBaseSpeed * speedMultiplier, sf::Vector2f((rand() % 544) + 368, 636.f), goblinValue, goblinAttackValue);
+			this->enemies.push_back(goblin);
+		}
+		else if (side == 2)//Left side goblin
+		{
+			Enemy goblin(&goblinWalkTexture, sf::Vector2u(4, 4), &goblinAttackTexture, sf::Vector2u(4, 4), &goblinHitTexture, sf::Vector2u(4, 4), goblinAnimationSpeed * animationSpeedMultiplier, goblinBaseSpeed * speedMultiplier, sf::Vector2f(368.0f, (rand() % 448) + 160), goblinValue, goblinAttackValue);
+			this->enemies.push_back(goblin);
+		}
+		else//Right side goblin
+		{
+			Enemy goblin(&goblinWalkTexture, sf::Vector2u(4, 4), &goblinAttackTexture, sf::Vector2u(4, 4), &goblinHitTexture, sf::Vector2u(4, 4), goblinAnimationSpeed * animationSpeedMultiplier, goblinBaseSpeed * speedMultiplier, sf::Vector2f(912.0f, (rand() % 448) + 128), goblinValue, goblinAttackValue);
+			this->enemies.push_back(goblin);
+		}
+		break;
+	case 3:
+
+		if (side == 0)// Top side orc
+		{
+			Enemy orc(&orcWalkTexture, sf::Vector2u(4, 4), &orcAttackTexture, sf::Vector2u(4, 4), &orcHitTexture, sf::Vector2u(4, 4), orcAnimationSpeed * animationSpeedMultiplier, orcBaseSpeed * speedMultiplier, sf::Vector2f((rand() % 544) + 368, 96.f), orcValue, orcAttackValue);
+			this->enemies.push_back(orc);
+		}
+		else if (side == 1)//Bottom side orc
+		{
+			Enemy centaur(&orcWalkTexture, sf::Vector2u(4, 4), &orcAttackTexture, sf::Vector2u(4, 4), &orcHitTexture, sf::Vector2u(4, 4), orcAnimationSpeed * animationSpeedMultiplier, orcBaseSpeed * speedMultiplier, sf::Vector2f((rand() % 544) + 368, 636.f), orcValue, orcAttackValue);
+			this->enemies.push_back(centaur);
+		}
+		else if (side == 2)//Left side orc
+		{
+			Enemy centaur(&orcWalkTexture, sf::Vector2u(4, 4), &orcAttackTexture, sf::Vector2u(4, 4), &orcHitTexture, sf::Vector2u(4, 4), orcAnimationSpeed * animationSpeedMultiplier, orcBaseSpeed * speedMultiplier, sf::Vector2f(368.0f, (rand() % 448) + 160), orcValue, orcAttackValue);
+			this->enemies.push_back(centaur);
+		}
+		else//Right side orc
+		{
+			Enemy centaur(&orcWalkTexture, sf::Vector2u(4, 4), &orcAttackTexture, sf::Vector2u(4, 4), &orcHitTexture, sf::Vector2u(4, 4), orcAnimationSpeed * animationSpeedMultiplier, orcBaseSpeed * speedMultiplier, sf::Vector2f(912.0f, (rand() % 448) + 128), orcValue, orcAttackValue);
+			this->enemies.push_back(centaur);
+		}
+		break;
 	}
 }
-
 
 const bool Game::running() const //Is game running or not
 {
@@ -144,6 +300,7 @@ Game::Game() //Game constructor - initialize all things on startup
 	this->initText();
 	this->initBackground();
 	this->initEnemies();
+	this->initCenter();
 }
 
 Game::~Game() //Game destructor - turn off game
@@ -178,14 +335,17 @@ void Game::updateText()//Update text values
 {
 	stringstream ss1;
 	stringstream ss2;
-	ss1 << "POINTS"  << std::endl;
-	ss2 << "HEALTH " << std::endl;
+	ss1 << "POINTS"  << endl << this->points;
+	ss2 << "HEALTH" << endl << this->health;
 	this->uiText1.setString(ss1.str());
 	this->uiText2.setString(ss2.str());
 }
 
 void Game::updateEnemies()
 {
+	this->animationSpeedMultiplier = float(5 / log(this->points)); //increasing speed over time
+	this->speedMultiplier = float(log(this->points) / 5);
+
 	if (this->enemies.size() < this->maxEnemies)
 	{
 		if (this->enemySpawnTimer >= this->enemySpawnTimerMax) //spawn enemy and restart spawnclock
@@ -202,30 +362,20 @@ void Game::updateEnemies()
 		e.Update(deltaTime);
 	}
 
-	////aktualizowanie czasu do spawnu
-	//if (this->enemies.size() < this->maxEnemies)
-	//{
-	//	if (this->enemySpawnTimer >= this->enemySpawnTimerMax)
-	//	{
-	//		//spawnowanie przeciwnika i resetowanie zaegara
-	//		this->spawnEnemy();
-	//		this->enemySpawnTimer = 0.f;
-	//	}
-	//	else
-	//		this->enemySpawnTimer += 1.f;
-	//}
+	for (size_t i = 0; i < this->enemies.size(); i++) //Check if enemy is able to attack and delete enemy after attack
+	{
+		if (enemies[i].attackFinished)
+		{
+			this->enemies.erase(this->enemies.begin() + i);
+			this->health -= enemies[i].attackPower;
+		}
+		if (this->enemies[i].getEnemyBounds().contains(Vector2f(622.0f, 354.0f)) || this->enemies[i].getEnemyBounds().contains(Vector2f(658.0f, 354.0f)) || this->enemies[i].getEnemyBounds().contains(Vector2f(622.0f, 382.0f)) || this->enemies[i].getEnemyBounds().contains(Vector2f(658.0f, 382.0f)))
+		{
+			this->enemies[i].state = 1;
+		}
+	}
 
-
-	//	////Je¿eli przeciwnik dojdzie na dó³
-	//	//if (this->enemies[i].getPosition().y > this->window->getSize().y)
-	//	//{
-	//	//	this->enemies.erase(this->enemies.begin() + i);
-	//	//	this->health -= 1;
-	//	//	std::cout << "Zdrowie: " << this->health << std::endl;
-	//	//}
-	//}
-
-	if (Mouse::isButtonPressed(Mouse::Left))	//Mouse collision with enemy object and delete this objects
+	if (Mouse::isButtonPressed(Mouse::Left))//Mouse collision with enemy object and delete this objects
 	{
 		if (this->mouseHeld == false)
 		{
@@ -235,6 +385,7 @@ void Game::updateEnemies()
 			{
 				if (this->enemies[i].getEnemyBounds().contains(this->mousePosView))
 				{
+					this->points += this->enemies[i].value;
 					deleted = true;
 					this->enemies.erase(this->enemies.begin() + i);
 				}
@@ -299,10 +450,11 @@ void Game::renderEnemies(RenderTarget& target) // Render all enemies
 
 void Game::render()//Render all elements to render
 {
+	window->draw(center);
 	this->window->clear(Color(11,11,11));
-
 	this->renderGround(*this->window);
 	this->renderTiles(*this->window);
+	window->draw(center);
 	this->renderEnemies(*this->window);
 	this->renderWalls(*this->window);
 	this->renderText(*this->window);

@@ -40,6 +40,7 @@ private:
 	std::vector<RectangleShape> tiles;
 	RectangleShape tile;
 	Texture tileTexture;
+	Texture centerTexture;
 
 	//Game logic
 	bool endGame;
@@ -50,11 +51,49 @@ private:
 	int maxEnemies;
 	bool mouseHeld;
 
+	//center
+	RectangleShape center;
+
 	//enemies
 	std::vector<Enemy> enemies;
-	Texture zombieTexture;
+	float animationSpeedMultiplier;
+	float speedMultiplier;
+	//zombie
+	Texture zombieWalkTexture;
+	Texture zombieAttackTexture;
+	Texture zombieHitTexture;
+	float zombieBaseSpeed;
+	float zombieAnimationSpeed;
+	float zombieValue;
+	int zombieAttackValue;
+	//centaur
+	Texture centaurWalkTexture;
+	Texture centaurAttackTexture;
+	Texture centaurHitTexture;
+	float centaurBaseSpeed;
+	float centaurValue;
+	float centaurAnimationSpeed;
+	int centaurAttackValue;
+	//orc
+	Texture orcWalkTexture;
+	Texture orcAttackTexture;
+	Texture orcHitTexture;
+	float orcBaseSpeed;
+	float orcAnimationSpeed;
+	float orcValue;
+	int orcAttackValue;
+	//goblin
+	Texture goblinWalkTexture;
+	Texture goblinAttackTexture;
+	Texture goblinHitTexture;
+	float goblinBaseSpeed;
+	float goblinAnimationSpeed;
+	float goblinValue;
+	int goblinAttackValue;
+
 
 	//Private functions
+	void initCenter();
 	void initVariables();
 	void initWindow();
 	void initFonts();
