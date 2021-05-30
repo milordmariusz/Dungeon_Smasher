@@ -63,6 +63,17 @@ void Game::initFonts() //Initialize fonts
 	}
 }
 
+void Game::initSounds()
+{
+	if (this->buffer.loadFromFile("sounds/kill.wav") == false)
+	{
+		cout << "ERROR::GAME::INITSOUNDS::Cannot load sound kill.wav" << std::endl;
+	}
+	this->sound.setBuffer(this->buffer);
+	this->sound.setVolume(10);
+
+}
+
 void Game::initText() //Initialize text
 {
 	this->uiText1.setFont(this->font);
@@ -297,6 +308,7 @@ Game::Game() //Game constructor - initialize all things on startup
 	this->initVariables();
 	this->initWindow();
 	this->initFonts();
+	this->initSounds();
 	this->initText();
 	this->initBackground();
 	this->initEnemies();
@@ -387,6 +399,7 @@ void Game::updateEnemies()
 				{
 					this->points += this->enemies[i].value;
 					deleted = true;
+					this->sound.play();
 					this->enemies.erase(this->enemies.begin() + i);
 				}
 			}

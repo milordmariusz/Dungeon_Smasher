@@ -28,6 +28,10 @@ private:
 	//Resources
 	Font font;
 
+	//Sound
+	SoundBuffer buffer;
+	Sound sound;
+
 	//Text
 	Text uiText1;
 	Text uiText2;
@@ -97,6 +101,7 @@ private:
 	void initVariables();
 	void initWindow();
 	void initFonts();
+	void initSounds();
 	void initText();
 	void initBackground();
 	void initEnemies();
