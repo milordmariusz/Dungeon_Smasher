@@ -91,7 +91,7 @@ void Game::initText() //Initialize text
 
 void Game::initBackground() //Initialize background
 {
-	if (this->wallsTexture.loadFromFile("background/wallsIce.png") == false) //Init walls
+	if (this->wallsTexture.loadFromFile("background/wallsHell.png") == false) //Init walls
 	{
 		cout << "ERROR::GAME::INITBACKGROUND::Cannot load walls.png" << std::endl;
 	}
@@ -102,7 +102,7 @@ void Game::initBackground() //Initialize background
 		this->walls.setTexture(&wallsTexture);
 	}
 
-	if (this->groundTexture.loadFromFile("background/groundIce.png") == false) //Init static ground
+	if (this->groundTexture.loadFromFile("background/groundHell.png") == false) //Init static ground
 	{
 		cout << "ERROR::GAME::INITBACKGROUND::Cannot load ground.png" << std::endl;
 	}
