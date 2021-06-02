@@ -70,7 +70,7 @@ void Game::initSounds()
 		cout << "ERROR::GAME::INITSOUNDS::Cannot load sound kill.wav" << std::endl;
 	}
 	this->sound.setBuffer(this->buffer);
-	this->sound.setVolume(10);
+	this->sound.setVolume(20);
 
 }
 
@@ -91,7 +91,7 @@ void Game::initText() //Initialize text
 
 void Game::initBackground() //Initialize background
 {
-	if (this->wallsTexture.loadFromFile("background/wallsHell.png") == false) //Init walls
+	if (this->wallsTexture.loadFromFile("background/walls.png") == false) //Init walls
 	{
 		cout << "ERROR::GAME::INITBACKGROUND::Cannot load walls.png" << std::endl;
 	}
@@ -102,7 +102,7 @@ void Game::initBackground() //Initialize background
 		this->walls.setTexture(&wallsTexture);
 	}
 
-	if (this->groundTexture.loadFromFile("background/groundHell.png") == false) //Init static ground
+	if (this->groundTexture.loadFromFile("background/ground.png") == false) //Init static ground
 	{
 		cout << "ERROR::GAME::INITBACKGROUND::Cannot load ground.png" << std::endl;
 	}
@@ -113,7 +113,7 @@ void Game::initBackground() //Initialize background
 		this->ground.setTexture(&groundTexture);
 	}
 
-	if (this->tileTexture.loadFromFile("background/tilesIce.png") == false) //Init random ground pattern
+	if (this->tileTexture.loadFromFile("background/tiles.png") == false) //Init random ground pattern
 	{
 		cout << "ERROR::GAME::INITBACKGROUND::Cannot load plates.png" << std::endl;
 	}
