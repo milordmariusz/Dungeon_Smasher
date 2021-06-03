@@ -27,6 +27,7 @@ private:
 
 	//Resources
 	Font font;
+	Font font2;
 
 	//Sound
 	SoundBuffer buffer;
@@ -35,6 +36,10 @@ private:
 	//Text
 	Text uiText1;
 	Text uiText2;
+	Text centaurInfo;
+	Text goblinInfo;
+	Text zombieInfo;
+	Text orcInfo;
 
 	//Menu
 	RectangleShape menuBackground;
@@ -51,6 +56,19 @@ private:
 	RectangleShape buttonMenu4;
 	Texture buttonMenu4Texture;
 	Texture buttonMenu4ActiveTexture;
+
+	//Bestiary
+	RectangleShape BestiaryBook;
+	Texture BestiaryBookTexture;
+	RectangleShape buttonBestiaryNext;
+	Texture buttonBestiaryNextTexture;
+	Texture buttonBestiaryNextActiveTexture;
+	RectangleShape buttonBestiaryBack;
+	Texture buttonBestiaryBackTexture;
+	Texture buttonBestiaryBackActiveTexture;
+	RectangleShape buttonBestiaryExit;
+	Texture buttonBestiaryExitTexture;
+	Texture buttonBestiaryExitActiveTexture;
 	
 
 	//Background
@@ -65,6 +83,7 @@ private:
 
 	//Game logic
 	string gameState = "game";
+	int pageCount = 1;
 	bool endGame;
 	unsigned points;
 	int health;
@@ -148,6 +167,7 @@ public:
 	void updateText();
 	void updateEnemies();
 	void updateMenu();
+	void updateBestiary();
 	void update();
 	void renderText(RenderTarget& target);
 	void renderWalls(RenderTarget& target);

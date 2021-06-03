@@ -100,7 +100,76 @@ void Game::initMenu() //initialize menu
 
 void Game::initBestiary() //initialize bestiary
 {
+	if (this->BestiaryBookTexture.loadFromFile("background/Book.png") == false) //Init book
+	{
+		cout << "ERROR::GAME::INITBESTIARY::Cannot load menuBackground.png" << std::endl;
+	}
+	else
+	{
+		this->BestiaryBook.setSize(sf::Vector2f(1234.0f, 700.0f));
+		this->BestiaryBook.setPosition(sf::Vector2f(20.0f, 10.0f));
+		this->BestiaryBook.setTexture(&BestiaryBookTexture);
+	}
+	if (this->buttonBestiaryBackActiveTexture.loadFromFile("buttons/backActive.png") == false)//init back
+	{
+		cout<< "ERROR::GAME::INITBESTIARY::Cannot load backActive.png" << std::endl;
+	}
+	if (this->buttonBestiaryBackTexture.loadFromFile("buttons/backDefault.png") == false)//init back
+	{
+		cout << "ERROR::GAME::INITBESTIARY::Cannot load backDefault.png" << std::endl;
+	}
+	else
+	{
+		this->buttonBestiaryBack.setSize(sf::Vector2f(150.0f, 150.0f));
+		this->buttonBestiaryBack.setPosition(sf::Vector2f(650.0f, 500.0f));
+		this->buttonBestiaryBack.setTexture(&buttonBestiaryBackTexture);
+	}
 
+	if (this->buttonBestiaryExitActiveTexture.loadFromFile("buttons/exitActive.png") == false)//init back
+	{
+		cout << "ERROR::GAME::INITBESTIARY::Cannot load exitActive.png" << std::endl;
+	}
+	if (this->buttonBestiaryExitTexture.loadFromFile("buttons/exitDefault.png") == false)//init back
+	{
+		cout << "ERROR::GAME::INITBESTIARY::Cannot load exitDefault.png" << std::endl;
+	}
+	else
+	{
+		this->buttonBestiaryExit.setSize(sf::Vector2f(150.0f, 150.0f));
+		this->buttonBestiaryExit.setPosition(sf::Vector2f(825.0f, 500.0f));
+		this->buttonBestiaryExit.setTexture(&buttonBestiaryExitTexture);
+	}
+
+	if (this->buttonBestiaryNextActiveTexture.loadFromFile("buttons/nextActive.png") == false)//init back
+	{
+		cout << "ERROR::GAME::INITBESTIARY::Cannot load nextActive.png" << std::endl;
+	}
+	if (this->buttonBestiaryNextTexture.loadFromFile("buttons/nextDefault.png") == false)//init back
+	{
+		cout << "ERROR::GAME::INITBESTIARY::Cannot load nextDefault.png" << std::endl;
+	}
+	else
+	{
+		this->buttonBestiaryNext.setSize(sf::Vector2f(150.0f, 150.0f));
+		this->buttonBestiaryNext.setPosition(sf::Vector2f(1000.0f, 500.0f));
+		this->buttonBestiaryNext.setTexture(&buttonBestiaryNextTexture);
+	}
+	//centaur info
+	stringstream ci;
+	ci << "        Centaur" << endl << "Speed: " << this->centaurBaseSpeed << endl << "Damage: " << this->centaurAttackValue << endl << "Value: " << this->centaurValue;
+	this->centaurInfo.setString(ci.str());
+
+	stringstream gi;
+	gi << "         Goblin" << endl << "Speed: " << this->goblinBaseSpeed << endl << "Damage: " << this->goblinAttackValue << endl << "Value: " << this->goblinValue;
+	this->goblinInfo.setString(gi.str());
+
+	stringstream zi;
+	zi << "         Zombie" << endl << "Speed: " << this->zombieBaseSpeed << endl << "Damage: " << this->zombieAttackValue << endl << "Value: " << this->zombieValue;
+	this->zombieInfo.setString(zi.str());
+
+	stringstream oi;
+	oi << "           Orc " << endl << "Speed: " << this->orcBaseSpeed << endl << "Damage: " << this->orcAttackValue << endl << "Value: " << this->orcValue;
+	this->orcInfo.setString(oi.str());
 }
 
 void Game::initHighscore() //initialize menu
@@ -142,6 +211,10 @@ void Game::initFonts() //Initialize fonts
 	{
 		cout << "ERROR::GAME::INITFONTS::Cannot load font ThaleahFat.ttf" << std::endl;
 	}
+	if (this->font2.loadFromFile("fonts/Enchanted Land.otf") == false)
+	{
+		cout << "ERROR::GAME::INITFONTS::Cannot load font Enchanted Land.otf" << std::endl;
+	}
 }
 
 void Game::initSounds() //Initialize sound
@@ -170,6 +243,30 @@ void Game::initText() //Initialize text
 	this->uiText2.setFillColor(Color::White);
 	this->uiText2.setString("ERROR");
 	this->uiText2.setPosition(1018.0f, 128.0f);
+
+	this->centaurInfo.setFont(this->font2);
+	this->centaurInfo.setCharacterSize(110);
+	this->centaurInfo.setFillColor(Color::Black);
+	this->centaurInfo.setString("ERROR");
+	this->centaurInfo.setPosition(700.0f, 0.0f);
+
+	this->goblinInfo.setFont(this->font2);
+	this->goblinInfo.setCharacterSize(110);
+	this->goblinInfo.setFillColor(Color::Black);
+	this->goblinInfo.setString("ERROR");
+	this->goblinInfo.setPosition(700.0f, 0.0f);
+
+	this->zombieInfo.setFont(this->font2);
+	this->zombieInfo.setCharacterSize(110);
+	this->zombieInfo.setFillColor(Color::Black);
+	this->zombieInfo.setString("ERROR");
+	this->zombieInfo.setPosition(700.0f, 0.0f);
+
+	this->orcInfo.setFont(this->font2);
+	this->orcInfo.setCharacterSize(110);
+	this->orcInfo.setFillColor(Color::Black);
+	this->orcInfo.setString("ERROR");
+	this->orcInfo.setPosition(700.0f, 0.0f);
 }
 
 void Game::initBackground() //Initialize background
@@ -541,9 +638,9 @@ void Game::updateMenu()
 	if (this->buttonMenu3.getGlobalBounds().contains(this->mousePosView))
 	{
 		this->buttonMenu3.setTexture(&buttonMenu3ActiveTexture);
-		if (Mouse::isButtonPressed(Mouse::Left))
+		if (Mouse::isButtonPressed(Mouse::Left)&&this->mouseHeld==false)
 		{
-			gameState = "game";
+			gameState = "bestiary";
 		}
 	}
 	else
@@ -565,6 +662,48 @@ void Game::updateMenu()
 	}
 }
 
+void Game::updateBestiary()
+{
+	if (this->buttonBestiaryBack.getGlobalBounds().contains(this->mousePosView))
+	{
+		this->buttonBestiaryBack.setTexture(&buttonBestiaryBackActiveTexture);
+		if (Mouse::isButtonPressed(Mouse::Left) && this->pageCount > 1)
+		{
+			this->pageCount -= 1;
+		}
+	}
+	else
+	{
+		this->buttonBestiaryBack.setTexture(&buttonBestiaryBackTexture);
+	}
+
+	if (this->buttonBestiaryExit.getGlobalBounds().contains(this->mousePosView))
+	{
+		this->buttonBestiaryExit.setTexture(&buttonBestiaryExitActiveTexture);
+		if (Mouse::isButtonPressed(Mouse::Left))
+		{
+			gameState = "menu";
+		}
+	}
+	else
+	{
+		this->buttonBestiaryExit.setTexture(&buttonBestiaryExitTexture);
+	}
+
+	if (this->buttonBestiaryNext.getGlobalBounds().contains(this->mousePosView))
+	{
+		this->buttonBestiaryNext.setTexture(&buttonBestiaryNextActiveTexture);
+		if (Mouse::isButtonPressed(Mouse::Left) && this->pageCount < 4)
+		{
+			this->pageCount += 1;
+		}
+	}
+	else
+	{
+		this->buttonBestiaryNext.setTexture(&buttonBestiaryNextTexture);
+	}
+}
+
 void Game::update() //Update all elements to update + events + update deltaTime
 {
 	if (gameState == "game")
@@ -578,6 +717,11 @@ void Game::update() //Update all elements to update + events + update deltaTime
 	else if (gameState == "menu")
 	{
 		this->updateMenu();
+	}
+	else if (gameState == "bestiary")
+	{
+		this->updateBestiary();
+		this->updateText();
 	}
 
 	this->pollEvents();
@@ -635,6 +779,23 @@ void Game::render()//Render all elements to render
 		window->draw(buttonMenu2);
 		window->draw(buttonMenu3);
 		window->draw(buttonMenu4);
+	}
+	else if (gameState == "bestiary")
+	{
+		this->window->clear(Color(11, 11, 11));
+		window->draw(menuBackground);
+		window->draw(BestiaryBook);
+		window->draw(buttonBestiaryBack);
+		window->draw(buttonBestiaryExit);
+		window->draw(buttonBestiaryNext);
+		if (this->pageCount==1)
+			window->draw(this->centaurInfo);
+		if (this->pageCount == 2)
+			window->draw(this->goblinInfo);
+		if (this->pageCount == 3)
+			window->draw(this->zombieInfo);
+		if (this->pageCount == 4)
+			window->draw(this->orcInfo);
 	}
 
 	this->window->display();
