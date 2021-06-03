@@ -614,7 +614,10 @@ void Game::updateMenu()
 		this->buttonMenu1.setTexture(&buttonMenu1ActiveTexture);
 		if (Mouse::isButtonPressed(Mouse::Left))
 		{
-			gameState = "game";
+			if (this->mouseHeld == false)
+			{
+				gameState = "game";
+			}
 		}
 	}
 	else
@@ -627,7 +630,10 @@ void Game::updateMenu()
 		this->buttonMenu2.setTexture(&buttonMenu2ActiveTexture);
 		if (Mouse::isButtonPressed(Mouse::Left))
 		{
-			gameState = "game";
+			if (this->mouseHeld == false)
+			{
+				gameState = "game";
+			}
 		}
 	}
 	else
@@ -640,7 +646,10 @@ void Game::updateMenu()
 		this->buttonMenu3.setTexture(&buttonMenu3ActiveTexture);
 		if (Mouse::isButtonPressed(Mouse::Left)&&this->mouseHeld==false)
 		{
-			gameState = "bestiary";
+			if (this->mouseHeld == false)
+			{
+				gameState = "bestiary";
+			}
 		}
 	}
 	else
@@ -653,7 +662,10 @@ void Game::updateMenu()
 		this->buttonMenu4.setTexture(&buttonMenu4ActiveTexture);
 		if (Mouse::isButtonPressed(Mouse::Left))
 		{
-			gameState = "game";
+			if (this->mouseHeld == false)
+			{
+				gameState = "game";
+			}
 		}
 	}
 	else
@@ -669,7 +681,10 @@ void Game::updateBestiary()
 		this->buttonBestiaryBack.setTexture(&buttonBestiaryBackActiveTexture);
 		if (Mouse::isButtonPressed(Mouse::Left) && this->pageCount > 1)
 		{
-			this->pageCount -= 1;
+			if (this->mouseHeld == false)
+			{
+				this->pageCount -= 1;
+			}
 		}
 	}
 	else
@@ -682,7 +697,10 @@ void Game::updateBestiary()
 		this->buttonBestiaryExit.setTexture(&buttonBestiaryExitActiveTexture);
 		if (Mouse::isButtonPressed(Mouse::Left))
 		{
-			gameState = "menu";
+			if (this->mouseHeld == false)
+			{
+				gameState = "menu";
+			}
 		}
 	}
 	else
@@ -695,7 +713,10 @@ void Game::updateBestiary()
 		this->buttonBestiaryNext.setTexture(&buttonBestiaryNextActiveTexture);
 		if (Mouse::isButtonPressed(Mouse::Left) && this->pageCount < 4)
 		{
-			this->pageCount += 1;
+			if (this->mouseHeld == false)
+			{
+				this->pageCount += 1;
+			}
 		}
 	}
 	else
@@ -726,6 +747,15 @@ void Game::update() //Update all elements to update + events + update deltaTime
 
 	this->pollEvents();
 	this->updateMousePositions();
+
+	if (Mouse::isButtonPressed(Mouse::Left))
+	{
+		this->mouseHeld = true;
+	}
+	else
+	{
+		this->mouseHeld = false;
+	}
 }
 
 void Game::renderText(RenderTarget& target)//Render text
