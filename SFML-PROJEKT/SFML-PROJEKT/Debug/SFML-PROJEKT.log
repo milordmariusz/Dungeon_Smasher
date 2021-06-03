@@ -1,115 +1,99 @@
-﻿  Animation.cpp
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Animation.cpp(10,38): warning C4244: "=": konwersja z "float" do "T", możliwa utrata danych
-          with
-          [
-              T=int
-          ]
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Animation.cpp(11,39): warning C4244: "=": konwersja z "float" do "T", możliwa utrata danych
-          with
-          [
-              T=int
-          ]
-  Enemy.cpp
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Enemy.cpp(37,11): warning C4101: "moveVectorY": lokalna zmienna, do której nie istnieje odwołanie
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Enemy.cpp(36,11): warning C4101: "moveVectorX": lokalna zmienna, do której nie istnieje odwołanie
-  Game.cpp
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(206,246): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+﻿  Game.cpp
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(301,246): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(206,260): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(211,250): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(301,260): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(306,250): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(211,265): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(216,258): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(306,265): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(311,258): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(216,266): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(221,258): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(311,266): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(316,258): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(221,266): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(229,256): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(316,266): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(324,256): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(229,270): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(234,256): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(324,270): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(329,256): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(234,271): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(239,264): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(329,271): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(334,264): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(239,272): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(244,264): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(334,272): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(339,264): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(244,272): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(251,250): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(339,272): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(346,250): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(251,264): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(256,250): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(346,264): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(351,250): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(256,265): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(261,258): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(351,265): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(356,258): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(261,266): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(266,258): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(356,266): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(361,258): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(266,266): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(274,232): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(361,266): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(369,232): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(274,246): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(279,236): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(369,246): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(374,236): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(279,251): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(284,244): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(374,251): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(379,244): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(284,252): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(289,244): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(379,252): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(384,244): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(289,252): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(361,27): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-  main.cpp
-  Generowanie kodu...
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(384,252): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(460,27): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
   SFML-PROJEKT.vcxproj -> C:\Users\Asus Rog\source\repos\Projekt\SFML-PROJEKT\Debug\SFML-PROJEKT.exe

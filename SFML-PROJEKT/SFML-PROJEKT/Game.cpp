@@ -1,7 +1,10 @@
 #include "Game.h"
 
+//////////////////// Initialize things ////////////////////
+
 void Game::initVariables() //Initialize variables
 {
+	this->gameState = "menu";
 	this->window = nullptr;
 	this->endGame = false;
 	this->points = 100;
@@ -19,7 +22,7 @@ void Game::initVariables() //Initialize variables
 	this->centaurBaseSpeed = 110.0f;
 	this->centaurAnimationSpeed = 1 / centaurBaseSpeed * 16;
 	this->centaurValue = 20.0f;
-	this->centaurAttackValue = 1;
+	this->centaurAttackValue = 5;
 	//orc
 	this->orcBaseSpeed = 80.0f;
 	this->orcAnimationSpeed = 1 / orcBaseSpeed * 16;
@@ -32,7 +35,85 @@ void Game::initVariables() //Initialize variables
 	this->goblinAttackValue = 1;
 }
 
-void Game::initCenter() //Initialize center
+void Game::initMenu() //initialize menu
+{
+	if (this->buttonMenu1ActiveTexture.loadFromFile("buttons/startActive.png") == false) //Init start button 1 active
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load startActive.png" << std::endl;
+	}
+	if (this->buttonMenu1Texture.loadFromFile("buttons/startDefault.png") == false) //Init start button 1
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load startDefault.png" << std::endl;
+	}
+	else
+	{
+		this->buttonMenu1.setSize(sf::Vector2f(190.0f, 89.0f));
+		this->buttonMenu1.setPosition(sf::Vector2f(50.0f, 500.0f));
+		this->buttonMenu1.setTexture(&buttonMenu1Texture);
+	}
+
+	if (this->buttonMenu2ActiveTexture.loadFromFile("buttons/highscoreActive.png") == false) //Init start button 1 active
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load highscoreActive.png" << std::endl;
+	}
+	if (this->buttonMenu2Texture.loadFromFile("buttons/highscoreDefault.png") == false) //Init start button 1
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load highscoreDefault.png" << std::endl;
+	}
+	else
+	{
+		this->buttonMenu2.setSize(sf::Vector2f(354.0f, 103.0f));
+		this->buttonMenu2.setPosition(sf::Vector2f(300.0f, 500.0f));
+		this->buttonMenu2.setTexture(&buttonMenu2Texture);
+	}
+
+	if (this->buttonMenu3ActiveTexture.loadFromFile("buttons/bestiaryActive.png") == false) //Init start button 1 active
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load bestiaryActive.png" << std::endl;
+	}
+	if (this->buttonMenu3Texture.loadFromFile("buttons/bestiaryDefault.png") == false) //Init start button 1
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load bestiaryDefault.png" << std::endl;
+	}
+	else
+	{
+		this->buttonMenu3.setSize(sf::Vector2f(307.0f, 111.0f));
+		this->buttonMenu3.setPosition(sf::Vector2f(650.0f, 500.0f));
+		this->buttonMenu3.setTexture(&buttonMenu3Texture);
+	}
+
+	if (this->buttonMenu4ActiveTexture.loadFromFile("buttons/creditsActive.png") == false) //Init start button 1 active
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load creditsActive.png" << std::endl;
+	}
+	if (this->buttonMenu4Texture.loadFromFile("buttons/creditsDefault.png") == false) //Init start button 1
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load creditsDefault.png" << std::endl;
+	}
+	else
+	{
+		this->buttonMenu4.setSize(sf::Vector2f(253.0f, 88.0f));
+		this->buttonMenu4.setPosition(sf::Vector2f(950.0f, 500.0f));
+		this->buttonMenu4.setTexture(&buttonMenu4Texture);
+	}
+}
+
+void Game::initBestiary() //initialize bestiary
+{
+
+}
+
+void Game::initHighscore() //initialize menu
+{
+
+}
+
+void Game::initCredits() //initialize menu
+{
+
+}
+
+void Game::initCenter() //Initialize center heart
 {
 	if (this->centerTexture.loadFromFile("background/center.png") == false) //Init walls
 	{
@@ -69,8 +150,11 @@ void Game::initSounds() //Initialize sound
 	{
 		cout << "ERROR::GAME::INITSOUNDS::Cannot load sound kill.wav" << std::endl;
 	}
-	this->sound.setBuffer(this->buffer);
-	this->sound.setVolume(20);
+	else
+	{
+		this->sound.setBuffer(this->buffer);
+		this->sound.setVolume(20);
+	}
 }
 
 void Game::initText() //Initialize text
@@ -90,6 +174,16 @@ void Game::initText() //Initialize text
 
 void Game::initBackground() //Initialize background
 {
+	if (this->menuBackgroundTexture.loadFromFile("background/menuBackground.png") == false) //Init background menu
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load menuBackground.png" << std::endl;
+	}
+	else
+	{
+		this->menuBackground.setSize(sf::Vector2f(1280.0f, 720.0f));
+		this->menuBackground.setTexture(&menuBackgroundTexture);
+	}
+
 	if (this->wallsTexture.loadFromFile("background/walls.png") == false) //Init walls
 	{
 		cout << "ERROR::GAME::INITBACKGROUND::Cannot load walls.png" << std::endl;
@@ -187,6 +281,8 @@ void Game::initEnemies() //Initialize enemies - load all textures
 		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture goblinHit.png" << std::endl;
 	}
 }
+
+///////////////////////////////////////////////////////////
 
 void Game::spawnEnemy() //Spawn enemy  
 /*
@@ -312,6 +408,10 @@ Game::Game() //Game constructor - initialize all things on startup
 	this->initBackground();
 	this->initEnemies();
 	this->initCenter();
+	this->initCredits();
+	this->initHighscore();
+	this->initBestiary();
+	this->initMenu();
 }
 
 Game::~Game() //Game destructor - turn off game
@@ -377,8 +477,8 @@ void Game::updateEnemies()
 	{
 		if (enemies[i].attackFinished)
 		{
-			this->enemies.erase(this->enemies.begin() + i);
 			this->health -= enemies[i].attackPower;
+			this->enemies.erase(this->enemies.begin() + i);
 		}
 		if (this->enemies[i].getEnemyBounds().contains(Vector2f(622.0f, 354.0f)) || this->enemies[i].getEnemyBounds().contains(Vector2f(658.0f, 354.0f)) || this->enemies[i].getEnemyBounds().contains(Vector2f(622.0f, 382.0f)) || this->enemies[i].getEnemyBounds().contains(Vector2f(658.0f, 382.0f)))
 		{
@@ -410,22 +510,78 @@ void Game::updateEnemies()
 	}
 }
 
+void Game::updateMenu()
+{
+	if (this->buttonMenu1.getGlobalBounds().contains(this->mousePosView))
+	{
+		this->buttonMenu1.setTexture(&buttonMenu1ActiveTexture);
+		if (Mouse::isButtonPressed(Mouse::Left))
+		{
+			gameState = "game";
+		}
+	}
+	else
+	{
+		this->buttonMenu1.setTexture(&buttonMenu1Texture);
+	}
+
+	if (this->buttonMenu2.getGlobalBounds().contains(this->mousePosView))
+	{
+		this->buttonMenu2.setTexture(&buttonMenu2ActiveTexture);
+		if (Mouse::isButtonPressed(Mouse::Left))
+		{
+			gameState = "game";
+		}
+	}
+	else
+	{
+		this->buttonMenu2.setTexture(&buttonMenu2Texture);
+	}
+
+	if (this->buttonMenu3.getGlobalBounds().contains(this->mousePosView))
+	{
+		this->buttonMenu3.setTexture(&buttonMenu3ActiveTexture);
+		if (Mouse::isButtonPressed(Mouse::Left))
+		{
+			gameState = "game";
+		}
+	}
+	else
+	{
+		this->buttonMenu3.setTexture(&buttonMenu3Texture);
+	}
+
+	if (this->buttonMenu4.getGlobalBounds().contains(this->mousePosView))
+	{
+		this->buttonMenu4.setTexture(&buttonMenu4ActiveTexture);
+		if (Mouse::isButtonPressed(Mouse::Left))
+		{
+			gameState = "game";
+		}
+	}
+	else
+	{
+		this->buttonMenu4.setTexture(&buttonMenu4Texture);
+	}
+}
+
 void Game::update() //Update all elements to update + events + update deltaTime
 {
-	this->pollEvents();
-
-	deltaTime = clock.restart().asSeconds();
-	if (deltaTime > 1.0f / 60.0f)
-		deltaTime = 1.0f / 60.0f;
-
-	if (this->endGame == false)
+	if (gameState == "game")
 	{
-		this->updateMousePositions();
-
+		deltaTime = clock.restart().asSeconds();
+		if (deltaTime > 1.0f / 60.0f)
+			deltaTime = 1.0f / 60.0f;
 		this->updateText();
-
 		this->updateEnemies();
 	}
+	else if (gameState == "menu")
+	{
+		this->updateMenu();
+	}
+
+	this->pollEvents();
+	this->updateMousePositions();
 }
 
 void Game::renderText(RenderTarget& target)//Render text
@@ -462,13 +618,24 @@ void Game::renderEnemies(RenderTarget& target) // Render all enemies
 
 void Game::render()//Render all elements to render
 {
-	window->draw(center);
-	this->window->clear(Color(11,11,11));
-	this->renderGround(*this->window);
-	this->renderTiles(*this->window);
-	window->draw(center);
-	this->renderEnemies(*this->window);
-	this->renderWalls(*this->window);
-	this->renderText(*this->window);
+	if (gameState=="game")
+	{
+		this->window->clear(Color(11, 11, 11));
+		this->renderGround(*this->window);
+		this->renderTiles(*this->window);
+		window->draw(center);
+		this->renderEnemies(*this->window);
+		this->renderWalls(*this->window);
+		this->renderText(*this->window);
+	}
+	else if (gameState == "menu")
+	{
+		window->draw(menuBackground);
+		window->draw(buttonMenu1);
+		window->draw(buttonMenu2);
+		window->draw(buttonMenu3);
+		window->draw(buttonMenu4);
+	}
+
 	this->window->display();
 }

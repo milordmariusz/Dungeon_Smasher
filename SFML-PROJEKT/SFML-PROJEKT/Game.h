@@ -36,6 +36,23 @@ private:
 	Text uiText1;
 	Text uiText2;
 
+	//Menu
+	RectangleShape menuBackground;
+	Texture menuBackgroundTexture;
+	RectangleShape buttonMenu1;
+	Texture buttonMenu1Texture;
+	Texture buttonMenu1ActiveTexture;
+	RectangleShape buttonMenu2;
+	Texture buttonMenu2Texture;
+	Texture buttonMenu2ActiveTexture;
+	RectangleShape buttonMenu3;
+	Texture buttonMenu3Texture;
+	Texture buttonMenu3ActiveTexture;
+	RectangleShape buttonMenu4;
+	Texture buttonMenu4Texture;
+	Texture buttonMenu4ActiveTexture;
+	
+
 	//Background
 	RectangleShape walls;
 	Texture wallsTexture;
@@ -47,6 +64,7 @@ private:
 	Texture centerTexture;
 
 	//Game logic
+	string gameState = "game";
 	bool endGame;
 	unsigned points;
 	int health;
@@ -97,6 +115,10 @@ private:
 
 
 	//Private functions
+	void initMenu();
+	void initBestiary();
+	void initHighscore();
+	void initCredits();
 	void initCenter();
 	void initVariables();
 	void initWindow();
@@ -124,8 +146,9 @@ public:
 	void pollEvents();
 	void updateMousePositions();
 	void updateText();
-	void update();
 	void updateEnemies();
+	void updateMenu();
+	void update();
 	void renderText(RenderTarget& target);
 	void renderWalls(RenderTarget& target);
 	void renderGround(RenderTarget& target);
