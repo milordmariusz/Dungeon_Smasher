@@ -63,7 +63,7 @@ void Game::initFonts() //Initialize fonts
 	}
 }
 
-void Game::initSounds()
+void Game::initSounds() //Initialize sound
 {
 	if (this->buffer.loadFromFile("sounds/kill.wav") == false)
 	{
@@ -71,7 +71,6 @@ void Game::initSounds()
 	}
 	this->sound.setBuffer(this->buffer);
 	this->sound.setVolume(20);
-
 }
 
 void Game::initText() //Initialize text
