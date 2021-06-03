@@ -48,7 +48,7 @@ void Game::initMenu() //initialize menu
 	else
 	{
 		this->buttonMenu1.setSize(sf::Vector2f(190.0f, 89.0f));
-		this->buttonMenu1.setPosition(sf::Vector2f(50.0f, 500.0f));
+		this->buttonMenu1.setPosition(sf::Vector2f(50.0f, 490.0f));
 		this->buttonMenu1.setTexture(&buttonMenu1Texture);
 	}
 
@@ -63,7 +63,7 @@ void Game::initMenu() //initialize menu
 	else
 	{
 		this->buttonMenu2.setSize(sf::Vector2f(354.0f, 103.0f));
-		this->buttonMenu2.setPosition(sf::Vector2f(300.0f, 500.0f));
+		this->buttonMenu2.setPosition(sf::Vector2f(290.0f, 490.0f));
 		this->buttonMenu2.setTexture(&buttonMenu2Texture);
 	}
 
@@ -78,7 +78,7 @@ void Game::initMenu() //initialize menu
 	else
 	{
 		this->buttonMenu3.setSize(sf::Vector2f(307.0f, 111.0f));
-		this->buttonMenu3.setPosition(sf::Vector2f(650.0f, 500.0f));
+		this->buttonMenu3.setPosition(sf::Vector2f(660.0f, 480.0f));
 		this->buttonMenu3.setTexture(&buttonMenu3Texture);
 	}
 
@@ -93,7 +93,7 @@ void Game::initMenu() //initialize menu
 	else
 	{
 		this->buttonMenu4.setSize(sf::Vector2f(253.0f, 88.0f));
-		this->buttonMenu4.setPosition(sf::Vector2f(950.0f, 500.0f));
+		this->buttonMenu4.setPosition(sf::Vector2f(980.0f, 490.0f));
 		this->buttonMenu4.setTexture(&buttonMenu4Texture);
 	}
 }
