@@ -98,6 +98,76 @@ void Game::initMenu() //initialize menu
 	}
 }
 
+void Game::initLevels()
+{
+	if (this->wallBackgroundTexture.loadFromFile("background/wall.png") == false) //Init book
+	{
+		cout << "ERROR::GAME::INITLEVELS::Cannot load wall.png" << std::endl;
+	}
+	else
+	{
+		this->wallBackground.setSize(sf::Vector2f(1280.0f, 509.0f));
+		this->wallBackground.setPosition(sf::Vector2f(0.0f, 0.0f));
+		this->wallBackground.setTexture(&wallBackgroundTexture);
+	}
+	if (this->buttonLevelsVanillaTexture.loadFromFile("buttons/vanillaGateDefault.png") == false) //Init book
+	{
+		cout << "ERROR::GAME::INITLEVELS::Cannot load vanillaGateDefault.png" << std::endl;
+	}
+	if (this->buttonLevelsVanillaActiveTexture.loadFromFile("buttons/vanillaGateActive.png") == false) //Init book
+	{
+		cout << "ERROR::GAME::INITLEVELS::Cannot load vanillaGateActive.png" << std::endl;
+	}
+	else
+	{
+		this->buttonLevelsVanilla.setSize(sf::Vector2f(350.0f, 500.0f));
+		this->buttonLevelsVanilla.setPosition(sf::Vector2f(57.0f, -80.0f));
+		this->buttonLevelsVanilla.setTexture(&buttonLevelsVanillaTexture);
+	}
+
+	if (this->buttonLevelsIceTexture.loadFromFile("buttons/IceGateDefault.png") == false) //Init book
+	{
+		cout << "ERROR::GAME::INITLEVELS::Cannot load IceGateDefault.png" << std::endl;
+	}
+	if (this->buttonLevelsIceActiveTexture.loadFromFile("buttons/IceGateActive.png") == false) //Init book
+	{
+		cout << "ERROR::GAME::INITLEVELS::Cannot load IceGateActive.png" << std::endl;
+	}
+	else
+	{
+		this->buttonLevelsIce.setSize(sf::Vector2f(350.0f, 500.0f));
+		this->buttonLevelsIce.setPosition(sf::Vector2f(465.0f, -80.0f));
+		this->buttonLevelsIce.setTexture(&buttonLevelsIceTexture);
+	}
+
+	if (this->buttonLevelsHellTexture.loadFromFile("buttons/HellGateDefault.png") == false) //Init book
+	{
+		cout << "ERROR::GAME::INITLEVELS::Cannot load HellGateDefault.png" << std::endl;
+	}
+	if (this->buttonLevelsHellActiveTexture.loadFromFile("buttons/HellGateActive.png") == false) //Init book
+	{
+		cout << "ERROR::GAME::INITLEVELS::Cannot load HellGateActive.png" << std::endl;
+	}
+	else
+	{
+		this->buttonLevelsHell.setSize(sf::Vector2f(350.0f, 500.0f));
+		this->buttonLevelsHell.setPosition(sf::Vector2f(872.0f, -80.0f));
+		this->buttonLevelsHell.setTexture(&buttonLevelsHellTexture);
+	}
+
+	stringstream vl;
+	vl << "Dungeon" << endl << "     Easy";
+	this->vanillaLevel.setString(vl.str());
+
+	stringstream il;
+	il << "Ice Cave" << endl << " Normal";
+	this->iceLevel.setString(il.str());
+
+	stringstream hl;
+	hl << " Hell" << endl << "Hard";
+	this->hellLevel.setString(hl.str());
+}
+
 void Game::initBestiary() //initialize bestiary
 {
 	if (this->BestiaryBookTexture.loadFromFile("background/Book.png") == false) //Init book
@@ -291,6 +361,24 @@ void Game::initText() //Initialize text
 	this->orcInfo.setFillColor(Color::Black);
 	this->orcInfo.setString("ERROR");
 	this->orcInfo.setPosition(700.0f, 0.0f);
+
+	this->vanillaLevel.setFont(this->font2);
+	this->vanillaLevel.setCharacterSize(110);
+	this->vanillaLevel.setFillColor(Color::White);
+	this->vanillaLevel.setString("ERROR");
+	this->vanillaLevel.setPosition(90.0f, 400.0f);
+
+	this->iceLevel.setFont(this->font2);
+	this->iceLevel.setCharacterSize(110);
+	this->iceLevel.setFillColor(Color::White);
+	this->iceLevel.setString("ERROR");
+	this->iceLevel.setPosition(520.0f, 400.0f);
+
+	this->hellLevel.setFont(this->font2);
+	this->hellLevel.setCharacterSize(110);
+	this->hellLevel.setFillColor(Color::White);
+	this->hellLevel.setString("ERROR");
+	this->hellLevel.setPosition(970.0f, 400.0f);
 }
 
 void Game::initBackground() //Initialize background
@@ -533,6 +621,7 @@ Game::Game() //Game constructor - initialize all things on startup
 	this->initHighscore();
 	this->initBestiary();
 	this->initMenu();
+	this->initLevels();
 }
 
 Game::~Game() //Game destructor - turn off game
@@ -640,7 +729,7 @@ void Game::updateMenu()
 		{
 			if (this->mouseHeld == false)
 			{
-				gameState = "game";
+				gameState = "levels";
 			}
 		}
 	}
@@ -695,6 +784,57 @@ void Game::updateMenu()
 	else
 	{
 		this->buttonMenu4.setTexture(&buttonMenu4Texture);
+	}
+}
+
+void Game::updateLevels()
+{
+	if (this->buttonLevelsVanilla.getGlobalBounds().contains(this->mousePosView))
+	{
+		this->buttonLevelsVanilla.setTexture(&buttonLevelsVanillaActiveTexture);
+		if (Mouse::isButtonPressed(Mouse::Left))
+		{
+			if (this->mouseHeld == false)
+			{
+				gameState = "game";
+			}
+		}
+	}
+	else
+	{
+		this->buttonLevelsVanilla.setTexture(&buttonLevelsVanillaTexture);
+	}
+
+	if (this->buttonLevelsIce.getGlobalBounds().contains(this->mousePosView))
+	{
+		this->buttonLevelsIce.setTexture(&buttonLevelsIceActiveTexture);
+		if (Mouse::isButtonPressed(Mouse::Left))
+		{
+			if (this->mouseHeld == false)
+			{
+				gameState = "game";
+			}
+		}
+	}
+	else
+	{
+		this->buttonLevelsIce.setTexture(&buttonLevelsIceTexture);
+	}
+
+	if (this->buttonLevelsHell.getGlobalBounds().contains(this->mousePosView))
+	{
+		this->buttonLevelsHell.setTexture(&buttonLevelsHellActiveTexture);
+		if (Mouse::isButtonPressed(Mouse::Left))
+		{
+			if (this->mouseHeld == false)
+			{
+				gameState = "game";
+			}
+		}
+	}
+	else
+	{
+		this->buttonLevelsHell.setTexture(&buttonLevelsHellTexture);
 	}
 }
 
@@ -770,6 +910,10 @@ void Game::updateCredits()
 
 void Game::update() //Update all elements to update + events + update deltaTime
 {
+	if (gameState == "levels")
+	{
+		this->updateLevels();
+	}
 	if (gameState == "game")
 	{
 		deltaTime = clock.restart().asSeconds();
@@ -848,6 +992,17 @@ void Game::render()//Render all elements to render
 		this->renderEnemies(*this->window);
 		this->renderWalls(*this->window);
 		this->renderText(*this->window);
+	}
+	else if (gameState == "levels")
+	{
+		this->window->clear(Color(11, 11, 11));
+		window->draw(wallBackground);
+		window->draw(buttonLevelsVanilla);
+		window->draw(buttonLevelsIce);
+		window->draw(buttonLevelsHell);
+		window->draw(this->vanillaLevel);
+		window->draw(this->iceLevel);
+		window->draw(this->hellLevel);
 	}
 	else if (gameState == "menu")
 	{

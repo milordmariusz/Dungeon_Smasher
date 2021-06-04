@@ -40,6 +40,9 @@ private:
 	Text goblinInfo;
 	Text zombieInfo;
 	Text orcInfo;
+	Text vanillaLevel;
+	Text iceLevel;
+	Text hellLevel;
 
 	//Menu
 	RectangleShape menuBackground;
@@ -56,6 +59,19 @@ private:
 	RectangleShape buttonMenu4;
 	Texture buttonMenu4Texture;
 	Texture buttonMenu4ActiveTexture;
+
+	//Levels
+	RectangleShape wallBackground;
+	Texture wallBackgroundTexture;
+	RectangleShape buttonLevelsVanilla;
+	Texture buttonLevelsVanillaTexture;
+	Texture buttonLevelsVanillaActiveTexture;
+	RectangleShape buttonLevelsIce;
+	Texture buttonLevelsIceTexture;
+	Texture buttonLevelsIceActiveTexture;
+	RectangleShape buttonLevelsHell;
+	Texture buttonLevelsHellTexture;
+	Texture buttonLevelsHellActiveTexture;
 
 	//Bestiary
 	RectangleShape BestiaryBook;
@@ -141,6 +157,7 @@ private:
 
 	//Private functions
 	void initMenu();
+	void initLevels();
 	void initBestiary();
 	void initHighscore();
 	void initCredits();
@@ -173,6 +190,7 @@ public:
 	void updateText();
 	void updateEnemies();
 	void updateMenu();
+	void updateLevels();
 	void updateBestiary();
 	void updateCredits();
 	void update();
