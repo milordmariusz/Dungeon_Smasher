@@ -69,8 +69,14 @@ private:
 	RectangleShape buttonBestiaryExit;
 	Texture buttonBestiaryExitTexture;
 	Texture buttonBestiaryExitActiveTexture;
-	
 
+	//Credits
+	RectangleShape CreditsBook;
+	Texture CreditsBookTexture;
+	RectangleShape buttonCreditsExit;
+	Texture buttonCreditsExitTexture;
+	Texture buttonCreditsExitActiveTexture;
+	
 	//Background
 	RectangleShape walls;
 	Texture wallsTexture;
@@ -168,6 +174,7 @@ public:
 	void updateEnemies();
 	void updateMenu();
 	void updateBestiary();
+	void updateCredits();
 	void update();
 	void renderText(RenderTarget& target);
 	void renderWalls(RenderTarget& target);

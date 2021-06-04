@@ -179,6 +179,30 @@ void Game::initHighscore() //initialize menu
 
 void Game::initCredits() //initialize menu
 {
+	if (this->CreditsBookTexture.loadFromFile("background/creditsBook.png") == false) //Init book
+	{
+		cout << "ERROR::GAME::INITCREDITS::Cannot load creditsBook.png" << std::endl;
+	}
+	else
+	{
+		this->CreditsBook.setSize(sf::Vector2f(1234.0f, 700.0f));
+		this->CreditsBook.setPosition(sf::Vector2f(20.0f, 10.0f));
+		this->CreditsBook.setTexture(&CreditsBookTexture);
+	}
+	if (this->buttonCreditsExitTexture.loadFromFile("buttons/exitDefault.png") == false)//init back
+	{
+		cout << "ERROR::GAME::INITCREDITS::Cannot load exitDefault.png" << std::endl;
+	}
+	if (this->buttonCreditsExitActiveTexture.loadFromFile("buttons/exitActive.png") == false)//init back
+	{
+		cout << "ERROR::GAME::INITCREDITS::Cannot load exitActive.png" << std::endl;
+	}
+	else
+	{
+		this->buttonCreditsExit.setSize(sf::Vector2f(150.0f, 150.0f));
+		this->buttonCreditsExit.setPosition(sf::Vector2f(275.0f, 500.0f));
+		this->buttonCreditsExit.setTexture(&buttonCreditsExitTexture);
+	}
 
 }
 
@@ -664,7 +688,7 @@ void Game::updateMenu()
 		{
 			if (this->mouseHeld == false)
 			{
-				gameState = "game";
+				gameState = "credits";
 			}
 		}
 	}
@@ -725,6 +749,25 @@ void Game::updateBestiary()
 	}
 }
 
+void Game::updateCredits()
+{
+	if (this->buttonCreditsExit.getGlobalBounds().contains(this->mousePosView))
+	{
+		this->buttonCreditsExit.setTexture(&buttonCreditsExitActiveTexture);
+		if (Mouse::isButtonPressed(Mouse::Left))
+		{
+			if (this->mouseHeld == false)
+			{
+				gameState = "menu";
+			}
+		}
+	}
+	else
+	{
+		this->buttonCreditsExit.setTexture(&buttonCreditsExitTexture);
+	}
+}
+
 void Game::update() //Update all elements to update + events + update deltaTime
 {
 	if (gameState == "game")
@@ -743,6 +786,10 @@ void Game::update() //Update all elements to update + events + update deltaTime
 	{
 		this->updateBestiary();
 		this->updateText();
+	}
+	else if (gameState == "credits")
+	{
+		this->updateCredits();
 	}
 
 	this->pollEvents();
@@ -826,6 +873,13 @@ void Game::render()//Render all elements to render
 			window->draw(this->zombieInfo);
 		if (this->pageCount == 4)
 			window->draw(this->orcInfo);
+	}
+	else if (gameState == "credits")
+	{
+		this->window->clear(Color(11, 11, 11));
+		window->draw(menuBackground);
+		window->draw(CreditsBook);
+		window->draw(buttonCreditsExit);
 	}
 
 	this->window->display();
