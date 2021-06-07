@@ -276,6 +276,48 @@ void Game::initCredits() //initialize menu
 
 }
 
+void Game::initKillscreen()
+{
+	if (this->killscreenBackgroundTexture.loadFromFile("background/killscreen.png") == false) //Init book
+	{
+		cout << "ERROR::GAME::INITKILLSCREEN::Cannot load killscren.png" << std::endl;
+	}
+	else
+	{
+		this->killscreenBackground.setSize(sf::Vector2f(1280.0f, 720.0f));
+		this->killscreenBackground.setPosition(sf::Vector2f(0.0f, 0.0f));
+		this->killscreenBackground.setTexture(&killscreenBackgroundTexture);
+	}
+	if (this->buttonKillscreenExitTexture.loadFromFile("buttons/exitDefault.png") == false)//init back
+	{
+		cout << "ERROR::GAME::INITKILLSCREEN::Cannot load exitDefault.png" << std::endl;
+	}
+	if (this->buttonKillscreenExitActiveTexture.loadFromFile("buttons/exitActive.png") == false)//init back
+	{
+		cout << "ERROR::GAME::INITKILLSCREEN::Cannot load exitActive.png" << std::endl;
+	}
+	else
+	{
+		this->buttonKillscreenExit.setSize(sf::Vector2f(188.0f, 148.0f));
+		this->buttonKillscreenExit.setPosition(sf::Vector2f(825.0f, 550.0f));
+		this->buttonKillscreenExit.setTexture(&buttonKillscreenExitTexture);
+	}
+	if (this->buttonKillscreenSaveTexture.loadFromFile("buttons/saveScoreDefault.png") == false)
+	{
+		cout<< "ERROR::GAME::INITKILLSCREEN::Cannot load saveScoreDefault.png" << std::endl;
+	}
+	if (this->buttonKillscreenSaveActiveTexture.loadFromFile("buttons/saveScoreActive.png") == false)
+	{
+		cout << "ERROR::GAME::INITKILLSCREEN::Cannot load saveScoreActive.png" << std::endl;
+	}
+	else
+	{
+		this->buttonKillscreenSave.setSize(sf::Vector2f(433.0f, 148.0f));
+		this->buttonKillscreenSave.setPosition(sf::Vector2f(225.0f, 550.0f));
+		this->buttonKillscreenSave.setTexture(&buttonKillscreenSaveTexture);
+	}
+}
+
 void Game::initCenter() //Initialize center heart
 {
 	if (this->centerTexture.loadFromFile("background/center.png") == false) //Init walls
@@ -379,6 +421,12 @@ void Game::initText() //Initialize text
 	this->hellLevel.setFillColor(Color::White);
 	this->hellLevel.setString("ERROR");
 	this->hellLevel.setPosition(970.0f, 400.0f);
+
+	this->highscoreKillscreen.setFont(this->font2);
+	this->highscoreKillscreen.setCharacterSize(110);
+	this->highscoreKillscreen.setFillColor(Color::White);
+	this->highscoreKillscreen.setString("ERROR");
+	this->highscoreKillscreen.setPosition(300.0f, 300.0f);
 }
 
 void Game::initBackground() //Initialize background
@@ -618,6 +666,7 @@ Game::Game() //Game constructor - initialize all things on startup
 	this->initEnemies();
 	this->initCenter();
 	this->initCredits();
+	this->initKillscreen();
 	this->initHighscore();
 	this->initBestiary();
 	this->initMenu();
@@ -688,6 +737,10 @@ void Game::updateEnemies()
 		if (enemies[i].attackFinished)
 		{
 			this->health -= enemies[i].attackPower;
+			if (health <= 0)
+			{
+				gameState = "killscreen";
+			}
 			this->enemies.erase(this->enemies.begin() + i);
 		}
 		if (this->enemies[i].getEnemyBounds().contains(Vector2f(622.0f, 354.0f)) || this->enemies[i].getEnemyBounds().contains(Vector2f(658.0f, 354.0f)) || this->enemies[i].getEnemyBounds().contains(Vector2f(622.0f, 382.0f)) || this->enemies[i].getEnemyBounds().contains(Vector2f(658.0f, 382.0f)))
@@ -908,11 +961,48 @@ void Game::updateCredits()
 	}
 }
 
+void Game::updateKillscreen()
+{
+	if (this->buttonKillscreenExit.getGlobalBounds().contains(this->mousePosView))
+	{
+		this->buttonKillscreenExit.setTexture(&buttonKillscreenExitActiveTexture);
+		if (Mouse::isButtonPressed(Mouse::Left))
+		{
+			if (this->mouseHeld == false)
+			{
+				gameState = "menu";
+			}
+		}
+	}
+	else
+	{
+		this->buttonKillscreenExit.setTexture(&buttonKillscreenExitTexture);
+	}
+
+	if (this->buttonKillscreenSave.getGlobalBounds().contains(this->mousePosView))
+	{
+		this->buttonKillscreenSave.setTexture(&buttonKillscreenSaveActiveTexture);
+		if (Mouse::isButtonPressed(Mouse::Left))
+		{
+			if (this->mouseHeld == false)
+			{
+				gameState = "menu";
+			}
+		}
+	}
+	else
+	{
+		this->buttonKillscreenSave.setTexture(&buttonKillscreenSaveTexture);
+	}
+}
+
 void Game::update() //Update all elements to update + events + update deltaTime
 {
 	if (gameState == "levels")
 	{
 		this->updateLevels();
+		this->health = 20;///////////////////////////////////////////////////////////////////to jest roboczo :)
+		this->enemies.clear();
 	}
 	if (gameState == "game")
 	{
@@ -934,6 +1024,14 @@ void Game::update() //Update all elements to update + events + update deltaTime
 	else if (gameState == "credits")
 	{
 		this->updateCredits();
+	}
+	else if (gameState == "killscreen")
+	{
+		this->updateKillscreen();
+
+		stringstream hsks;
+		hsks << "Your Score: " << this->points;
+		this->highscoreKillscreen.setString(hsks.str());
 	}
 
 	this->pollEvents();
@@ -1035,6 +1133,14 @@ void Game::render()//Render all elements to render
 		window->draw(menuBackground);
 		window->draw(CreditsBook);
 		window->draw(buttonCreditsExit);
+	}
+	else if (gameState == "killscreen")
+	{
+		this->window->clear(Color(11, 11, 11));
+		window->draw(killscreenBackground);
+		window->draw(buttonKillscreenExit);
+		window->draw(buttonKillscreenSave);
+		window->draw(highscoreKillscreen);
 	}
 
 	this->window->display();

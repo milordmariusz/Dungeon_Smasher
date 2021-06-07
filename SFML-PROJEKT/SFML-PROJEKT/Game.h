@@ -43,6 +43,7 @@ private:
 	Text vanillaLevel;
 	Text iceLevel;
 	Text hellLevel;
+	Text highscoreKillscreen;
 
 	//Menu
 	RectangleShape menuBackground;
@@ -92,6 +93,16 @@ private:
 	RectangleShape buttonCreditsExit;
 	Texture buttonCreditsExitTexture;
 	Texture buttonCreditsExitActiveTexture;
+
+	//Killscreen
+	RectangleShape killscreenBackground;
+	Texture killscreenBackgroundTexture;
+	RectangleShape buttonKillscreenExit;
+	Texture buttonKillscreenExitTexture;
+	Texture buttonKillscreenExitActiveTexture;
+	RectangleShape buttonKillscreenSave;
+	Texture buttonKillscreenSaveTexture;
+	Texture buttonKillscreenSaveActiveTexture;
 	
 	//Background
 	RectangleShape walls;
@@ -161,6 +172,7 @@ private:
 	void initBestiary();
 	void initHighscore();
 	void initCredits();
+	void initKillscreen();
 	void initCenter();
 	void initVariables();
 	void initWindow();
@@ -193,6 +205,7 @@ public:
 	void updateLevels();
 	void updateBestiary();
 	void updateCredits();
+	void updateKillscreen();
 	void update();
 	void renderText(RenderTarget& target);
 	void renderWalls(RenderTarget& target);
