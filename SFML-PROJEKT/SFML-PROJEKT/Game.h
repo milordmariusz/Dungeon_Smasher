@@ -44,6 +44,8 @@ private:
 	Text goblinInfo;
 	Text zombieInfo;
 	Text orcInfo;
+	Text wargoInfo;
+	Text yetiInfo;
 	Text vanillaLevel;
 	Text iceLevel;
 	Text hellLevel;
@@ -91,6 +93,19 @@ private:
 	RectangleShape buttonBestiaryExit;
 	Texture buttonBestiaryExitTexture;
 	Texture buttonBestiaryExitActiveTexture;
+
+	Sprite centaurBestiary;
+	Sprite goblinBestiary;
+	Sprite orcBestiary;
+	Sprite wargoBestiary;
+	Sprite yetiBestiary;
+	Sprite zombieBestiary;
+	Texture centaurBestiaryTexture;
+	Texture goblinBestiaryTexture;
+	Texture orcBestiaryTexture;
+	Texture wargoBestiaryTexture;
+	Texture yetiBestiaryTexture;
+	Texture zombieBestiaryTexture;
 
 	//Highscore
 	RectangleShape highscoreBackground;
@@ -156,6 +171,8 @@ private:
 	Texture zombieAttackTexture;
 	Texture zombieHellWalkTexture;
 	Texture zombieHellAttackTexture;
+	Texture zombieIceWalkTexture;
+	Texture zombieIceAttackTexture;
 	float zombieBaseSpeed;
 	float zombieAnimationSpeed;
 	float zombieValue;
@@ -165,6 +182,8 @@ private:
 	Texture centaurAttackTexture;
 	Texture centaurHellWalkTexture;
 	Texture centaurHellAttackTexture;
+	Texture centaurIceWalkTexture;
+	Texture centaurIceAttackTexture;
 	float centaurBaseSpeed;
 	float centaurValue;
 	float centaurAnimationSpeed;
@@ -174,6 +193,8 @@ private:
 	Texture orcAttackTexture;
 	Texture orcHellWalkTexture;
 	Texture orcHellAttackTexture;
+	Texture orcIceWalkTexture;
+	Texture orcIceAttackTexture;
 	float orcBaseSpeed;
 	float orcAnimationSpeed;
 	float orcValue;
@@ -183,6 +204,8 @@ private:
 	Texture goblinAttackTexture;
 	Texture goblinHellWalkTexture;
 	Texture goblinHellAttackTexture;
+	Texture goblinIceWalkTexture;
+	Texture goblinIceAttackTexture;
 	float goblinBaseSpeed;
 	float goblinAnimationSpeed;
 	float goblinValue;

@@ -250,6 +250,75 @@ void Game::initBestiary() //initialize bestiary
 	stringstream oi;
 	oi << "           Orc " << endl << "Speed: " << this->orcBaseSpeed << endl << "Damage: " << this->orcAttackValue << endl << "Value: " << this->orcValue;
 	this->orcInfo.setString(oi.str());
+
+	stringstream wi;
+	wi << "          Wargo" << endl << "Speed: " << this->wargoBaseSpeed << endl << "Damage: " << this->wargoAttackValue << endl << "Value: " << this->wargoValue;
+	this->wargoInfo.setString(wi.str());
+
+	stringstream yi;
+	yi << "           Yeti" << endl << "Speed: " << this->yetiBaseSpeed << endl << "Damage: " << this->yetiAttackValue << endl << "Value: " << this->yetiValue;
+	this->yetiInfo.setString(yi.str());
+
+	if (this->centaurBestiaryTexture.loadFromFile("background/centaurBestiary.png") == false)
+	{
+		cout << "ERROR::GAME::INITBESTIARY::Cannot load centaurBestiary.png" << std::endl;
+	}
+	else
+	{
+		this->centaurBestiary.setTexture(centaurBestiaryTexture);
+		this->centaurBestiary.setPosition(sf::Vector2f(100.0f, 80.0f));
+	}
+
+	if (this->goblinBestiaryTexture.loadFromFile("background/goblinBestiary.png") == false)
+	{
+		cout << "ERROR::GAME::INITBESTIARY::Cannot load goblinBestiary.png" << std::endl;
+	}
+	else
+	{
+		this->goblinBestiary.setTexture(goblinBestiaryTexture);
+		this->goblinBestiary.setPosition(sf::Vector2f(110.0f, 80.0f));
+	}
+
+	if (this->orcBestiaryTexture.loadFromFile("background/orcBestiary.png") == false)
+	{
+		cout << "ERROR::GAME::INITBESTIARY::Cannot load orcBestiary.png" << std::endl;
+	}
+	else
+	{
+		this->orcBestiary.setTexture(orcBestiaryTexture);
+		this->orcBestiary.setPosition(sf::Vector2f(110.0f, 80.0f));
+	}
+
+	if (this->wargoBestiaryTexture.loadFromFile("background/wargoBestiary.png") == false)
+	{
+		cout << "ERROR::GAME::INITBESTIARY::Cannot load wargoBestiary.png" << std::endl;
+	}
+	else
+	{
+		this->wargoBestiary.setTexture(wargoBestiaryTexture);
+		this->wargoBestiary.setPosition(sf::Vector2f(120.0f, 80.0f));
+	}
+
+	if (this->yetiBestiaryTexture.loadFromFile("background/yetiBestiary.png") == false)
+	{
+		cout << "ERROR::GAME::INITBESTIARY::Cannot load yetiBestiary.png" << std::endl;
+	}
+	else
+	{
+		this->yetiBestiary.setTexture(yetiBestiaryTexture);
+		this->yetiBestiary.setPosition(sf::Vector2f(120.0f, 80.0f));
+	}
+
+	if (this->zombieBestiaryTexture.loadFromFile("background/zombieBestiary.png") == false)
+	{
+		cout << "ERROR::GAME::INITBESTIARY::Cannot load zombieBestiary.png" << std::endl;
+	}
+	else
+	{
+		this->zombieBestiary.setTexture(zombieBestiaryTexture);
+		this->zombieBestiary.setPosition(sf::Vector2f(120.0f, 80.0f));
+	}
+
 }
 
 void Game::initHighscore() //initialize menu
@@ -452,6 +521,18 @@ void Game::initText() //Initialize text
 	this->orcInfo.setString("ERROR");
 	this->orcInfo.setPosition(700.0f, 0.0f);
 
+	this->wargoInfo.setFont(this->font2);
+	this->wargoInfo.setCharacterSize(110);
+	this->wargoInfo.setFillColor(Color::Black);
+	this->wargoInfo.setString("ERROR");
+	this->wargoInfo.setPosition(700.0f, 0.0f);
+
+	this->yetiInfo.setFont(this->font2);
+	this->yetiInfo.setCharacterSize(110);
+	this->yetiInfo.setFillColor(Color::Black);
+	this->yetiInfo.setString("ERROR");
+	this->yetiInfo.setPosition(700.0f, 0.0f);
+
 	this->vanillaLevel.setFont(this->font2);
 	this->vanillaLevel.setCharacterSize(110);
 	this->vanillaLevel.setFillColor(Color::White);
@@ -481,6 +562,7 @@ void Game::initText() //Initialize text
 	this->highscoreInfo.setFillColor(Color::White);
 	this->highscoreInfo.setString("ERROR");
 	this->highscoreInfo.setPosition(640.0f, 200.0f);
+
 }
 
 void Game::initBackground() //Initialize background
@@ -577,6 +659,15 @@ void Game::initEnemies() //Initialize enemies - load all textures
 	{
 		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture zombieAttackHell.png" << std::endl;
 	}
+
+	if (this->zombieIceWalkTexture.loadFromFile("enemies/zombieWalkIce.png") == false) //Init zombieWalk
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture zombieWalkIce.png" << std::endl;
+	}
+	if (this->zombieIceAttackTexture.loadFromFile("enemies/zombieAttackIce.png") == false) //Init zombieAttack
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture zombieAttackIce.png" << std::endl;
+	}
 	
 	// CENTAUR
 	if (this->centaurWalkTexture.loadFromFile("enemies/centaurWalk.png") == false) //Init centaurWalk
@@ -596,6 +687,16 @@ void Game::initEnemies() //Initialize enemies - load all textures
 	{
 		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture centaurAttackHell.png" << std::endl;
 	}
+
+	if (this->centaurIceWalkTexture.loadFromFile("enemies/centaurWalkIce.png") == false) //Init centaurWalk
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture centaurWalkIce.png" << std::endl;
+	}
+	if (this->centaurIceAttackTexture.loadFromFile("enemies/centaurAttackIce.png") == false) //Init centaurAttack
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture centaurAttackIce.png" << std::endl;
+	}
+
 	
 	// ORC
 	if (this->orcWalkTexture.loadFromFile("enemies/orcWalk.png") == false) //Init orcWalk
@@ -615,6 +716,15 @@ void Game::initEnemies() //Initialize enemies - load all textures
 	{
 		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture orcAttackHell.png" << std::endl;
 	}
+
+	if (this->orcIceWalkTexture.loadFromFile("enemies/orcWalkIce.png") == false) //Init orcWalk
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture orcWalkIce.png" << std::endl;
+	}
+	if (this->orcIceAttackTexture.loadFromFile("enemies/orcAttackIce.png") == false) //Init orcAttack
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture orcAttackIce.png" << std::endl;
+	}
 	
 	// GOBLIN
 	if (this->goblinWalkTexture.loadFromFile("enemies/goblinWalk.png") == false) //Init goblinWalk
@@ -633,6 +743,15 @@ void Game::initEnemies() //Initialize enemies - load all textures
 	if (this->goblinHellAttackTexture.loadFromFile("enemies/goblinAttackHell.png") == false) //Init goblinWalk
 	{
 		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture goblinAttackHell.png" << std::endl;
+	}
+
+	if (this->goblinIceWalkTexture.loadFromFile("enemies/goblinWalkIce.png") == false) //Init goblinWalk
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture goblinWalkIce.png" << std::endl;
+	}
+	if (this->goblinIceAttackTexture.loadFromFile("enemies/goblinAttackIce.png") == false) //Init goblinWalk
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture goblinAttackIce.png" << std::endl;
 	}
 
 	// YETI
@@ -750,8 +869,16 @@ Enemy name(walktexture, (number of walk frames x,number of walk frames y), attac
 	}
 
 	/// Difficulty modifiers
-	 if (this->difficulty == "medium")
+	if (this->difficulty == "medium")
 	{
+		zombieTexW = &zombieIceWalkTexture;
+		zombieTexA = &zombieIceAttackTexture;
+		centaurTexW = &centaurIceWalkTexture;
+		centaurTexA = &centaurIceAttackTexture;
+		orcTexW = &orcIceWalkTexture;
+		orcTexA = &orcIceAttackTexture;
+		goblinTexW = &goblinIceWalkTexture;
+		goblinTexA = &goblinIceAttackTexture;
 		animSpeed = animSpeed * 1.5;
 		moveSpeed = moveSpeed * 1.5;
 		value = value * 2;
@@ -1199,7 +1326,7 @@ void Game::updateBestiary()
 	if (this->buttonBestiaryNext.getGlobalBounds().contains(this->mousePosView))
 	{
 		this->buttonBestiaryNext.setTexture(&buttonBestiaryNextActiveTexture);
-		if (Mouse::isButtonPressed(Mouse::Left) && this->pageCount < 4)
+		if (Mouse::isButtonPressed(Mouse::Left) && this->pageCount < 6)
 		{
 			if (this->mouseHeld == false)
 			{
@@ -1432,14 +1559,36 @@ void Game::render()//Render all elements to render
 		window->draw(buttonBestiaryBack);
 		window->draw(buttonBestiaryExit);
 		window->draw(buttonBestiaryNext);
-		if (this->pageCount==1)
+		if (this->pageCount == 1)
+		{
 			window->draw(this->centaurInfo);
+			window->draw(this->centaurBestiary);
+		}
 		if (this->pageCount == 2)
+		{
 			window->draw(this->goblinInfo);
+			window->draw(this->goblinBestiary);
+		}
 		if (this->pageCount == 3)
+		{
 			window->draw(this->zombieInfo);
+			window->draw(this->zombieBestiary);
+		}
 		if (this->pageCount == 4)
+		{
 			window->draw(this->orcInfo);
+			window->draw(this->orcBestiary);
+		}
+		if (this->pageCount == 5)
+		{
+			window->draw(this->wargoInfo);
+			window->draw(this->wargoBestiary);
+		}
+		if (this->pageCount == 6)
+		{
+			window->draw(this->yetiInfo);
+			window->draw(this->yetiBestiary);
+		}
 	}
 	else if (gameState == "credits")
 	{
