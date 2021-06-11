@@ -4,7 +4,6 @@
 
 void Game::initVariables() //Initialize variables
 {
-	this->gameState = "menu";
 	this->window = nullptr;
 	this->endGame = false;
 	this->points = 100;
@@ -429,6 +428,25 @@ void Game::initText() //Initialize text
 	this->highscoreKillscreen.setPosition(300.0f, 300.0f);
 }
 
+void Game::generateTiles(Texture& tiles)
+{
+	for (int i = 0; i < 17; i++)
+	{
+		for (int j = 0; j < 16; j++)
+		{
+			int r1 = rand() % 100;
+			if (r1 > 80)
+			{
+				this->tile.setSize(sf::Vector2f(32.0f, 32.0f));
+				this->tile.setTexture(&tiles);
+				this->tile.setPosition(Vector2f(368.0f + i * 32.0f, 128.0f + j * 32.0f));
+				this->tile.setTextureRect(IntRect(32 * (rand() % 6), 32 * (rand() % 1), 32, 32));
+			}
+			this->tiles.push_back(this->tile);
+		}
+	}
+}
+
 void Game::initBackground() //Initialize background
 {
 	if (this->menuBackgroundTexture.loadFromFile("background/menuBackground.png") == false) //Init background menu
@@ -466,24 +484,6 @@ void Game::initBackground() //Initialize background
 	if (this->tileTexture.loadFromFile("background/tiles.png") == false) //Init random ground pattern
 	{
 		cout << "ERROR::GAME::INITBACKGROUND::Cannot load plates.png" << std::endl;
-	}
-	else //Generate random ground pattern
-	{
-		for (int i = 0; i < 17; i++)
-		{
-			for (int j = 0; j < 16; j++)
-			{
-				int r1 = rand() % 100;
-				if (r1 > 80)
-				{
-					this->tile.setSize(sf::Vector2f(32.0f, 32.0f));
-					this->tile.setTexture(&tileTexture);
-					this->tile.setPosition(Vector2f(368.0f + i * 32.0f, 128.0f + j * 32.0f));
-					this->tile.setTextureRect(IntRect(32 * (rand() % 6), 32 * (rand() % 1), 32, 32));
-				}
-				this->tiles.push_back(this->tile);
-			}
-		}
 	}
 
 
@@ -884,7 +884,14 @@ void Game::updateLevels()
 		{
 			if (this->mouseHeld == false)
 			{
+				this->walls.setTexture(&wallsTexture);
+				this->ground.setTexture(&groundTexture);
+				this->tile.setTexture(&tileTexture);
+				this->tiles.clear();
+				generateTiles(tileTexture);
+				difficulty = "easy";
 				gameState = "game";
+				
 			}
 		}
 	}
@@ -903,6 +910,9 @@ void Game::updateLevels()
 				this->walls.setTexture(&wallsIceTexture);
 				this->ground.setTexture(&groundIceTexture);
 				this->tile.setTexture(&tileIceTexture);
+				this->tiles.clear();
+				generateTiles(tileIceTexture);
+				difficulty = "medium";
 				gameState = "game";
 			}
 		}
@@ -922,6 +932,9 @@ void Game::updateLevels()
 				this->walls.setTexture(&wallsHellTexture);
 				this->ground.setTexture(&groundHellTexture);
 				this->tile.setTexture(&tileHellTexture);
+				this->tiles.clear();
+				generateTiles(tileHellTexture);
+				difficulty = "hard";
 				gameState = "game";
 			}
 		}
@@ -1042,7 +1055,8 @@ void Game::update() //Update all elements to update + events + update deltaTime
 	if (gameState == "levels")
 	{
 		this->updateLevels();
-		this->health = 20;///////////////////////////////////////////////////////////////////to jest roboczo :)
+		this->health = 20;
+		this->points = 100;///////////////////////////////////////////////////////////////////to jest roboczo :)
 		this->enemies.clear();////////////////////to niby te¿ ale dzia³a :)))
 	}
 	if (gameState == "game")

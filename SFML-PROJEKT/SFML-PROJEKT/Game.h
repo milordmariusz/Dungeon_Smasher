@@ -121,7 +121,8 @@ private:
 	Texture centerTexture;
 
 	//Game logic
-	string gameState = "game";
+	string difficulty = "easy";
+	string gameState = "menu";
 	int pageCount = 1;
 	bool endGame;
 	unsigned points;
@@ -187,6 +188,7 @@ private:
 	void initText();
 	void initBackground();
 	void initEnemies();
+	void generateTiles(Texture& tiles);
 
 public:
 	//Variables
