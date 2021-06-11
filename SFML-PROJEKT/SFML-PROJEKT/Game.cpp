@@ -485,6 +485,41 @@ void Game::initBackground() //Initialize background
 			}
 		}
 	}
+
+
+	///ICE MAP
+
+	if (this->wallsIceTexture.loadFromFile("background/wallsIce.png") == false) //Init walls
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load wallsIce.png" << std::endl;
+	}
+
+	if (this->groundIceTexture.loadFromFile("background/groundIce.png") == false) //Init static ground
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load groundIce.png" << std::endl;
+	}
+
+	if (this->tileIceTexture.loadFromFile("background/tilesIce.png") == false) //Init random ground pattern
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load platesIce.png" << std::endl;
+	}
+
+	///HELL MAP
+
+	if (this->wallsHellTexture.loadFromFile("background/wallsHell.png") == false) //Init walls
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load wallsHell.png" << std::endl;
+	}
+
+	if (this->groundHellTexture.loadFromFile("background/groundHell.png") == false) //Init static ground
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load groundHell.png" << std::endl;
+	}
+
+	if (this->tileHellTexture.loadFromFile("background/tilesHell.png") == false) //Init random ground pattern
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load platesHell.png" << std::endl;
+	}
 }
 
 void Game::initEnemies() //Initialize enemies - load all textures
@@ -865,6 +900,9 @@ void Game::updateLevels()
 		{
 			if (this->mouseHeld == false)
 			{
+				this->walls.setTexture(&wallsIceTexture);
+				this->ground.setTexture(&groundIceTexture);
+				this->tile.setTexture(&tileIceTexture);
 				gameState = "game";
 			}
 		}
@@ -881,6 +919,9 @@ void Game::updateLevels()
 		{
 			if (this->mouseHeld == false)
 			{
+				this->walls.setTexture(&wallsHellTexture);
+				this->ground.setTexture(&groundHellTexture);
+				this->tile.setTexture(&tileHellTexture);
 				gameState = "game";
 			}
 		}
@@ -1002,7 +1043,7 @@ void Game::update() //Update all elements to update + events + update deltaTime
 	{
 		this->updateLevels();
 		this->health = 20;///////////////////////////////////////////////////////////////////to jest roboczo :)
-		this->enemies.clear();
+		this->enemies.clear();////////////////////to niby te¿ ale dzia³a :)))
 	}
 	if (gameState == "game")
 	{

@@ -1,52 +1,16 @@
 ﻿  Game.cpp
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(558): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(593): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(558): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(563): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(593): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(598): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(563): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(568): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(568): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(573): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(573): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(581): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(581): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(586): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(586): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(591): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(591): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(596): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
-          with
-          [
-              T=float
-          ]
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(596): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(598): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
 d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(603): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
@@ -59,18 +23,18 @@ d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(608): warning C4244: "argum
               T=float
           ]
 d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(608): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(613): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(616): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(613): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(618): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(616): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(621): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(618): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(621): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
 d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(626): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
@@ -83,17 +47,53 @@ d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(631): warning C4244: "argum
               T=float
           ]
 d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(631): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(636): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(638): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(636): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(641): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(638): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(643): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(641): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(719): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(643): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(648): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(648): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(653): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(653): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(661): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(661): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(666): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(666): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(671): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(671): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(676): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(676): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+d:\github\projekt\sfml-projekt\sfml-projekt\game.cpp(754): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
   SFML-PROJEKT.vcxproj -> D:\github\Projekt\SFML-PROJEKT\Debug\SFML-PROJEKT.exe

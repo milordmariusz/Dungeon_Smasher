@@ -107,11 +107,17 @@ private:
 	//Background
 	RectangleShape walls;
 	Texture wallsTexture;
+	Texture wallsHellTexture;
+	Texture wallsIceTexture;
 	RectangleShape ground;
 	Texture groundTexture;
+	Texture groundHellTexture;
+	Texture groundIceTexture;
 	std::vector<RectangleShape> tiles;
 	RectangleShape tile;
 	Texture tileTexture;
+	Texture tileIceTexture;
+	Texture tileHellTexture;
 	Texture centerTexture;
 
 	//Game logic
