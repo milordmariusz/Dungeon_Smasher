@@ -87,6 +87,13 @@ private:
 	Texture buttonBestiaryExitTexture;
 	Texture buttonBestiaryExitActiveTexture;
 
+	//Highscore
+	RectangleShape highscoreBook;
+	Texture highscoreBookTexture;
+	RectangleShape buttonHighscoreExit;
+	Texture buttonHighscoreExitTexture;
+	Texture buttonHighscoreExitActiveTexture;
+
 	//Credits
 	RectangleShape CreditsBook;
 	Texture CreditsBookTexture;
@@ -174,7 +181,20 @@ private:
 	float goblinAnimationSpeed;
 	float goblinValue;
 	int goblinAttackValue;
-
+	//yeti
+	Texture yetiWalkTexture;
+	Texture yetiAttackTexture;
+	float yetiBaseSpeed;
+	float yetiAnimationSpeed;
+	float yetiValue;
+	int yetiAttackValue;
+	//wargo
+	Texture wargoWalkTexture;
+	Texture wargoAttackTexture;
+	float wargoBaseSpeed;
+	float wargoAnimationSpeed;
+	float wargoValue;
+	int wargoAttackValue;
 
 	//Private functions
 	void initMenu();

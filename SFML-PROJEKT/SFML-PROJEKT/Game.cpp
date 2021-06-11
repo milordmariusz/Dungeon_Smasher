@@ -12,27 +12,37 @@ void Game::initVariables() //Initialize variables
 	this->enemySpawnTimer = this->enemySpawnTimerMax;
 	this->maxEnemies = 10;
 	this->mouseHeld = false;
-	this->specialEnemyRespCap = 2000;
+	this->specialEnemyRespCap = 2500;
 	//zombie
-	this->zombieBaseSpeed = 50.0f;
+	this->zombieBaseSpeed = 55.0f;
 	this->zombieAnimationSpeed = 1 / zombieBaseSpeed * 16;
 	this->zombieValue = 5.0f;
 	this->zombieAttackValue = 1;
 	//centaur
-	this->centaurBaseSpeed = 110.0f;
+	this->centaurBaseSpeed = 100.0f;
 	this->centaurAnimationSpeed = 1 / centaurBaseSpeed * 16;
 	this->centaurValue = 25.0f;
 	this->centaurAttackValue = 2;
 	//orc
-	this->orcBaseSpeed = 80.0f;
+	this->orcBaseSpeed = 75.0f;
 	this->orcAnimationSpeed = 1 / orcBaseSpeed * 16;
 	this->orcValue = 15.0f;
 	this->orcAttackValue = 3;
 	//goblin
-	this->goblinBaseSpeed = 140.0f;
+	this->goblinBaseSpeed = 120.0f;
 	this->goblinAnimationSpeed = 1 / goblinBaseSpeed * 16;
 	this->goblinValue = 20.0f;
 	this->goblinAttackValue = 1;
+	//yeti
+	this->yetiBaseSpeed = 85.0f;
+	this->yetiAnimationSpeed = 1 / yetiBaseSpeed * 16;
+	this->yetiValue = 25.0f;
+	this->yetiAttackValue = 3;
+	//wargo
+	this->wargoBaseSpeed = 90.0f;
+	this->wargoAnimationSpeed = 1 / wargoBaseSpeed * 16;
+	this->wargoValue = 30.0f;
+	this->wargoAttackValue = 3;
 }
 
 void Game::initMenu() //initialize menu
@@ -244,30 +254,36 @@ void Game::initBestiary() //initialize bestiary
 
 void Game::initHighscore() //initialize menu
 {
-	if (this->CreditsBookTexture.loadFromFile("background/creditsBook.png") == false) //Init book
+	if (this->highscoreBookTexture.loadFromFile("background/Book.png") == false) //Init book
 	{
-		cout << "ERROR::GAME::INITCREDITS::Cannot load creditsBook.png" << std::endl;
+		cout << "ERROR::GAME::INITHIGHSCORE::Cannot load menuBackground.png" << std::endl;
 	}
 	else
 	{
-		this->CreditsBook.setSize(sf::Vector2f(1234.0f, 700.0f));
-		this->CreditsBook.setPosition(sf::Vector2f(20.0f, 10.0f));
-		this->CreditsBook.setTexture(&CreditsBookTexture);
+		this->highscoreBook.setSize(sf::Vector2f(1234.0f, 700.0f));
+		this->highscoreBook.setPosition(sf::Vector2f(20.0f, 10.0f));
+		this->highscoreBook.setTexture(&highscoreBookTexture);
 	}
-	if (this->buttonCreditsExitTexture.loadFromFile("buttons/exitDefault.png") == false)//init back
+
+	if (this->buttonHighscoreExitActiveTexture.loadFromFile("buttons/exitActive.png") == false)//init back
 	{
-		cout << "ERROR::GAME::INITCREDITS::Cannot load exitDefault.png" << std::endl;
+		cout << "ERROR::GAME::INITHIGHSCORE::Cannot load exitActive.png" << std::endl;
 	}
-	if (this->buttonCreditsExitActiveTexture.loadFromFile("buttons/exitActive.png") == false)//init back
+	if (this->buttonHighscoreExitTexture.loadFromFile("buttons/exitDefault.png") == false)//init back
 	{
-		cout << "ERROR::GAME::INITCREDITS::Cannot load exitActive.png" << std::endl;
+		cout << "ERROR::GAME::INITHIGHSCORE::Cannot load exitDefault.png" << std::endl;
 	}
 	else
 	{
-		this->buttonCreditsExit.setSize(sf::Vector2f(150.0f, 150.0f));
-		this->buttonCreditsExit.setPosition(sf::Vector2f(275.0f, 500.0f));
-		this->buttonCreditsExit.setTexture(&buttonCreditsExitTexture);
+		this->buttonHighscoreExit.setSize(sf::Vector2f(150.0f, 150.0f));
+		this->buttonHighscoreExit.setPosition(sf::Vector2f(825.0f, 500.0f));
+		this->buttonHighscoreExit.setTexture(&buttonHighscoreExitTexture);
 	}
+
+	stringstream ci;
+	ci << "        Centaur" << endl << "Speed: " << this->centaurBaseSpeed << endl << "Damage: " << this->centaurAttackValue << endl << "Value: " << this->centaurValue;
+	this->centaurInfo.setString(ci.str());
+
 }
 
 void Game::initCredits() //initialize menu
@@ -603,6 +619,27 @@ void Game::initEnemies() //Initialize enemies - load all textures
 	{
 		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture goblinAttackHell.png" << std::endl;
 	}
+
+	// YETI
+	if (this->yetiWalkTexture.loadFromFile("enemies/yetiWalk.png") == false) //Init goblinWalk
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture yetiWalk.png" << std::endl;
+	}
+	if (this->yetiAttackTexture.loadFromFile("enemies/yetiAttack.png") == false) //Init goblinWalk
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture yetiAttack.png" << std::endl;
+	}
+
+	// WARGO
+	if (this->wargoWalkTexture.loadFromFile("enemies/wargoWalk.png") == false) //Init goblinWalk
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture wargoWalk.png" << std::endl;
+	}
+	if (this->wargoAttackTexture.loadFromFile("enemies/wargoAttack.png") == false) //Init goblinWalk
+	{
+		cout << "ERROR::GAME::INITBACKGROUND::Cannot load texture wargoAttack.png" << std::endl;
+	}
+
 }
 
 ///////////////////////////////////////////////////////////
@@ -651,9 +688,9 @@ Enemy name(walktexture, (number of walk frames x,number of walk frames y), attac
 	float value = zombieValue;
 	int type;
 	int side = (rand() % 4); // Generate spawn side  0-top 1-bottom 2-left 3-right
-	//if (this->points >= specialEnemyRespCap && (difficulty == "medium" || difficulty == "hard"))
-	//	type = (rand() % 5); // Generate type of enemy 0-zombie 1-centaur 2-goblin 3-orc 4-special
-	//else
+	if (this->points >= specialEnemyRespCap && (difficulty == "medium" || difficulty == "hard"))
+		type = (rand() % 5); // Generate type of enemy 0-zombie 1-centaur 2-goblin 3-orc 4-special
+	else
 		type = (rand() % 4); // Generate type of enemy 0-zombie 1-centaur 2-goblin 3-orc
 	
 
@@ -680,6 +717,21 @@ Enemy name(walktexture, (number of walk frames x,number of walk frames y), attac
 		moveSpeed = orcBaseSpeed * speedMultiplier;
 		animSpeed = orcAnimationSpeed * animationSpeedMultiplier;
 		value = orcValue;
+	}
+	else if (type == 4)
+	{
+		if (this->difficulty == "medium")
+		{
+			moveSpeed = yetiBaseSpeed * speedMultiplier;
+			animSpeed = yetiAnimationSpeed * animationSpeedMultiplier;
+			value = yetiValue;
+		}
+		else if (this->difficulty == "hard")
+		{
+			moveSpeed = wargoBaseSpeed * speedMultiplier;
+			animSpeed = wargoAnimationSpeed * animationSpeedMultiplier;
+			value = wargoValue;
+		}
 	}
 
 	/// Difficulty modifiers
@@ -750,6 +802,19 @@ Enemy name(walktexture, (number of walk frames x,number of walk frames y), attac
 	{
 		Enemy orc(orcTexW, sf::Vector2u(4, 4), orcTexA, sf::Vector2u(4, 4), animSpeed, moveSpeed, resp, value, orcAttackValue);
 		this->enemies.push_back(orc);
+	}
+	else if (type == 4)
+	{
+		if (this->difficulty == "medium")
+		{
+			Enemy yeti(&yetiWalkTexture, sf::Vector2u(6, 4), &yetiAttackTexture, sf::Vector2u(4, 4), animSpeed, moveSpeed, resp, value, yetiAttackValue);
+			this->enemies.push_back(yeti);
+		}
+		else if (this->difficulty == "hard")
+		{
+			Enemy wargo(&wargoWalkTexture, sf::Vector2u(4, 4), &wargoAttackTexture, sf::Vector2u(4, 4), animSpeed, moveSpeed, resp, value, wargoAttackValue);
+			this->enemies.push_back(wargo);
+		}
 	}
 }
 
@@ -1082,9 +1147,9 @@ void Game::updateBestiary()
 
 void Game::updateHighscore()
 {
-	if (this->buttonCreditsExit.getGlobalBounds().contains(this->mousePosView))
+	if (this->buttonHighscoreExit.getGlobalBounds().contains(this->mousePosView))
 	{
-		this->buttonCreditsExit.setTexture(&buttonCreditsExitActiveTexture);
+		this->buttonHighscoreExit.setTexture(&buttonHighscoreExitActiveTexture);
 		if (Mouse::isButtonPressed(Mouse::Left))
 		{
 			if (this->mouseHeld == false)
@@ -1095,7 +1160,7 @@ void Game::updateHighscore()
 	}
 	else
 	{
-		this->buttonCreditsExit.setTexture(&buttonCreditsExitTexture);
+		this->buttonHighscoreExit.setTexture(&buttonHighscoreExitTexture);
 	}
 }
 
@@ -1188,7 +1253,7 @@ void Game::update() //Update all elements to update + events + update deltaTime
 	}
 	else if (gameState == "highscore")
 	{
-		this->updateCredits();
+		this->updateHighscore();
 	}
 	else if (gameState == "killscreen")
 	{
@@ -1298,8 +1363,8 @@ void Game::render()//Render all elements to render
 	{
 		this->window->clear(Color(11, 11, 11));
 		window->draw(menuBackground);
-		window->draw(CreditsBook);
-		window->draw(buttonCreditsExit);
+		window->draw(highscoreBook);
+		window->draw(buttonHighscoreExit);
 	}
 	else if (gameState == "killscreen")
 	{
