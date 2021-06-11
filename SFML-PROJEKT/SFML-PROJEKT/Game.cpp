@@ -244,7 +244,30 @@ void Game::initBestiary() //initialize bestiary
 
 void Game::initHighscore() //initialize menu
 {
-
+	if (this->CreditsBookTexture.loadFromFile("background/creditsBook.png") == false) //Init book
+	{
+		cout << "ERROR::GAME::INITCREDITS::Cannot load creditsBook.png" << std::endl;
+	}
+	else
+	{
+		this->CreditsBook.setSize(sf::Vector2f(1234.0f, 700.0f));
+		this->CreditsBook.setPosition(sf::Vector2f(20.0f, 10.0f));
+		this->CreditsBook.setTexture(&CreditsBookTexture);
+	}
+	if (this->buttonCreditsExitTexture.loadFromFile("buttons/exitDefault.png") == false)//init back
+	{
+		cout << "ERROR::GAME::INITCREDITS::Cannot load exitDefault.png" << std::endl;
+	}
+	if (this->buttonCreditsExitActiveTexture.loadFromFile("buttons/exitActive.png") == false)//init back
+	{
+		cout << "ERROR::GAME::INITCREDITS::Cannot load exitActive.png" << std::endl;
+	}
+	else
+	{
+		this->buttonCreditsExit.setSize(sf::Vector2f(150.0f, 150.0f));
+		this->buttonCreditsExit.setPosition(sf::Vector2f(275.0f, 500.0f));
+		this->buttonCreditsExit.setTexture(&buttonCreditsExitTexture);
+	}
 }
 
 void Game::initCredits() //initialize menu
@@ -891,7 +914,7 @@ void Game::updateMenu()
 		{
 			if (this->mouseHeld == false)
 			{
-				gameState = "game";
+				gameState = "highscore";
 			}
 		}
 	}
@@ -1057,6 +1080,25 @@ void Game::updateBestiary()
 	}
 }
 
+void Game::updateHighscore()
+{
+	if (this->buttonCreditsExit.getGlobalBounds().contains(this->mousePosView))
+	{
+		this->buttonCreditsExit.setTexture(&buttonCreditsExitActiveTexture);
+		if (Mouse::isButtonPressed(Mouse::Left))
+		{
+			if (this->mouseHeld == false)
+			{
+				gameState = "menu";
+			}
+		}
+	}
+	else
+	{
+		this->buttonCreditsExit.setTexture(&buttonCreditsExitTexture);
+	}
+}
+
 void Game::updateCredits()
 {
 	if (this->buttonCreditsExit.getGlobalBounds().contains(this->mousePosView))
@@ -1141,6 +1183,10 @@ void Game::update() //Update all elements to update + events + update deltaTime
 		this->updateText();
 	}
 	else if (gameState == "credits")
+	{
+		this->updateCredits();
+	}
+	else if (gameState == "highscore")
 	{
 		this->updateCredits();
 	}
@@ -1242,6 +1288,13 @@ void Game::render()//Render all elements to render
 			window->draw(this->orcInfo);
 	}
 	else if (gameState == "credits")
+	{
+		this->window->clear(Color(11, 11, 11));
+		window->draw(menuBackground);
+		window->draw(CreditsBook);
+		window->draw(buttonCreditsExit);
+	}
+	else if (gameState == "highscore")
 	{
 		this->window->clear(Color(11, 11, 11));
 		window->draw(menuBackground);

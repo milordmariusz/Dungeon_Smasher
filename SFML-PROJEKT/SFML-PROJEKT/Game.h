@@ -217,6 +217,7 @@ public:
 	void updateBestiary();
 	void updateCredits();
 	void updateKillscreen();
+	void updateHighscore();
 	void update();
 	void renderText(RenderTarget& target);
 	void renderTiles(RenderTarget& target);
