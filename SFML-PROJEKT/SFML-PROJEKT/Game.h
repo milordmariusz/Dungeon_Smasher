@@ -93,8 +93,8 @@ private:
 	Texture buttonBestiaryExitActiveTexture;
 
 	//Highscore
-	RectangleShape highscoreBook;
-	Texture highscoreBookTexture;
+	RectangleShape highscoreBackground;
+	Texture highscoreBackgroundTexture;
 	RectangleShape buttonHighscoreExit;
 	Texture buttonHighscoreExitTexture;
 	Texture buttonHighscoreExitActiveTexture;

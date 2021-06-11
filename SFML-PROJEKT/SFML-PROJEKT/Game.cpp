@@ -254,15 +254,15 @@ void Game::initBestiary() //initialize bestiary
 
 void Game::initHighscore() //initialize menu
 {
-	if (this->highscoreBookTexture.loadFromFile("background/Book.png") == false) //Init book
+	if (this->highscoreBackgroundTexture.loadFromFile("background/killscreen.png") == false) //Init book
 	{
-		cout << "ERROR::GAME::INITHIGHSCORE::Cannot load menuBackground.png" << std::endl;
+		cout << "ERROR::GAME::INITHIGHSCORE::Cannot load killscreen.png" << std::endl;
 	}
 	else
 	{
-		this->highscoreBook.setSize(sf::Vector2f(1234.0f, 700.0f));
-		this->highscoreBook.setPosition(sf::Vector2f(20.0f, 10.0f));
-		this->highscoreBook.setTexture(&highscoreBookTexture);
+		this->highscoreBackground.setSize(sf::Vector2f(1280.0f, 720.0f));
+		this->highscoreBackground.setPosition(sf::Vector2f(0.0f, 0.0f));
+		this->highscoreBackground.setTexture(&highscoreBackgroundTexture);
 	}
 
 	if (this->buttonHighscoreExitActiveTexture.loadFromFile("buttons/exitActive.png") == false)//init back
@@ -276,7 +276,7 @@ void Game::initHighscore() //initialize menu
 	else
 	{
 		this->buttonHighscoreExit.setSize(sf::Vector2f(150.0f, 150.0f));
-		this->buttonHighscoreExit.setPosition(sf::Vector2f(825.0f, 500.0f));
+		this->buttonHighscoreExit.setPosition(sf::Vector2f(1110.0f, 575.0f));
 		this->buttonHighscoreExit.setTexture(&buttonHighscoreExitTexture);
 	}
 	
@@ -480,7 +480,7 @@ void Game::initText() //Initialize text
 	this->highscoreInfo.setCharacterSize(110);
 	this->highscoreInfo.setFillColor(Color::White);
 	this->highscoreInfo.setString("ERROR");
-	this->highscoreInfo.setPosition(150.0f, 10.0f);
+	this->highscoreInfo.setPosition(640.0f, 200.0f);
 }
 
 void Game::initBackground() //Initialize background
@@ -1190,8 +1190,9 @@ void Game::updateHighscore()
 	}
 
 	stringstream hsi;
-	hsi << "1. 10000000000" << endl << "2. " << endl << "3. " << endl << "4. " << endl << "5. " << endl;
+	hsi << "1. " << endl << "2. " << endl << "3. " << endl;
 	this->highscoreInfo.setString(hsi.str());
+	highscoreInfo.setOrigin(highscoreInfo.getLocalBounds().width / 2.0f, 0.0f);
 }
 
 void Game::updateCredits()
@@ -1242,7 +1243,7 @@ void Game::updateKillscreen()
 			if (this->mouseHeld == false)
 			{
 				saveScore();
-				gameState = "menu";
+				gameState = "highscore";
 				this->health = 20;
 				this->points = 100;
 				this->enemies.clear();
@@ -1396,8 +1397,7 @@ void Game::render()//Render all elements to render
 	else if (gameState == "highscore")
 	{
 		this->window->clear(Color(11, 11, 11));
-		window->draw(menuBackground);
-		window->draw(highscoreBook);
+		window->draw(highscoreBackground);
 		window->draw(buttonHighscoreExit);
 		window->draw(highscoreInfo);
 	}
