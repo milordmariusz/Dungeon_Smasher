@@ -279,11 +279,8 @@ void Game::initHighscore() //initialize menu
 		this->buttonHighscoreExit.setPosition(sf::Vector2f(825.0f, 500.0f));
 		this->buttonHighscoreExit.setTexture(&buttonHighscoreExitTexture);
 	}
-
-	stringstream ci;
-	ci << "        Centaur" << endl << "Speed: " << this->centaurBaseSpeed << endl << "Damage: " << this->centaurAttackValue << endl << "Value: " << this->centaurValue;
-	this->centaurInfo.setString(ci.str());
-
+	
+	stringstream hsi;
 }
 
 void Game::initCredits() //initialize menu
@@ -411,13 +408,25 @@ void Game::initText() //Initialize text
 	this->uiText1.setCharacterSize(64);
 	this->uiText1.setFillColor(Color::White);
 	this->uiText1.setString("ERROR");
-	this->uiText1.setPosition(88.0f, 128.0f);
+	this->uiText1.setPosition(168.0f, 128.0f);
 
 	this->uiText2.setFont(this->font);
 	this->uiText2.setCharacterSize(64);
 	this->uiText2.setFillColor(Color::White);
 	this->uiText2.setString("ERROR");
-	this->uiText2.setPosition(1018.0f, 128.0f);
+	this->uiText2.setPosition(1112.0f, 128.0f);
+
+	this->pointsInfo.setFont(this->font);
+	this->pointsInfo.setCharacterSize(64);
+	this->pointsInfo.setFillColor(Color::White);
+	this->pointsInfo.setString("ERROR");
+	this->pointsInfo.setPosition(168.0f, 196.0f);
+
+	this->healthInfo.setFont(this->font);
+	this->healthInfo.setCharacterSize(64);
+	this->healthInfo.setFillColor(Color::White);
+	this->healthInfo.setString("ERROR");
+	this->healthInfo.setPosition(1112.0f, 196.0f);
 
 	this->centaurInfo.setFont(this->font2);
 	this->centaurInfo.setCharacterSize(110);
@@ -465,7 +474,13 @@ void Game::initText() //Initialize text
 	this->highscoreKillscreen.setCharacterSize(110);
 	this->highscoreKillscreen.setFillColor(Color::White);
 	this->highscoreKillscreen.setString("ERROR");
-	this->highscoreKillscreen.setPosition(300.0f, 300.0f);
+	this->highscoreKillscreen.setPosition(640.0f, 300.0f);
+
+	this->highscoreInfo.setFont(this->font2);
+	this->highscoreInfo.setCharacterSize(110);
+	this->highscoreInfo.setFillColor(Color::White);
+	this->highscoreInfo.setString("ERROR");
+	this->highscoreInfo.setPosition(150.0f, 10.0f);
 }
 
 void Game::initBackground() //Initialize background
@@ -841,6 +856,11 @@ void Game::pollEvents() //Events
 	}
 }
 
+void Game::saveScore()
+{
+
+}
+
 ///////////////////////////////////////////////////////////
 
 
@@ -888,10 +908,16 @@ void Game::updateText()//Update text values
 {
 	stringstream ss1;
 	stringstream ss2;
-	ss1 << "POINTS"  << endl << this->points;
-	ss2 << "HEALTH" << endl << this->health;
-	this->uiText1.setString(ss1.str());
-	this->uiText2.setString(ss2.str());
+	ss1 << this->points;
+	ss2 << this->health;
+	this->uiText1.setString("POINTS");
+	this->uiText2.setString("HEALTH");
+	this->pointsInfo.setString(ss1.str());
+	this->healthInfo.setString(ss2.str());
+	uiText1.setOrigin(uiText1.getLocalBounds().width / 2.0f, 0.0f);
+	uiText2.setOrigin(uiText2.getLocalBounds().width / 2.0f, 0.0f);
+	pointsInfo.setOrigin(pointsInfo.getLocalBounds().width / 2.0f, 0.0f);
+	healthInfo.setOrigin(healthInfo.getLocalBounds().width / 2.0f, 0.0f);
 }
 
 void Game::updateEnemies()
@@ -1162,6 +1188,10 @@ void Game::updateHighscore()
 	{
 		this->buttonHighscoreExit.setTexture(&buttonHighscoreExitTexture);
 	}
+
+	stringstream hsi;
+	hsi << "1. 10000000000" << endl << "2. " << endl << "3. " << endl << "4. " << endl << "5. " << endl;
+	this->highscoreInfo.setString(hsi.str());
 }
 
 void Game::updateCredits()
@@ -1211,6 +1241,7 @@ void Game::updateKillscreen()
 		{
 			if (this->mouseHeld == false)
 			{
+				saveScore();
 				gameState = "menu";
 				this->health = 20;
 				this->points = 100;
@@ -1262,6 +1293,7 @@ void Game::update() //Update all elements to update + events + update deltaTime
 		stringstream hsks;
 		hsks << "Your Score: " << this->points;
 		this->highscoreKillscreen.setString(hsks.str());
+		highscoreKillscreen.setOrigin(highscoreKillscreen.getLocalBounds().width / 2.0f, 0.0f);
 	}
 
 	this->pollEvents();
@@ -1286,6 +1318,8 @@ void Game::renderText(RenderTarget& target)//Render text
 {
 	target.draw(this->uiText1);
 	target.draw(this->uiText2);
+	target.draw(this->pointsInfo);
+	target.draw(this->healthInfo);
 }
 
 void Game::renderTiles(RenderTarget& target)//Render pattern of ground
@@ -1365,6 +1399,7 @@ void Game::render()//Render all elements to render
 		window->draw(menuBackground);
 		window->draw(highscoreBook);
 		window->draw(buttonHighscoreExit);
+		window->draw(highscoreInfo);
 	}
 	else if (gameState == "killscreen")
 	{

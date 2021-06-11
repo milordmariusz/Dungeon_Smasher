@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include <fstream>
 #include<vector>
 #include<ctime>
 #include<sstream>
@@ -9,6 +10,7 @@
 #include<SFML/Audio.hpp>
 #include<SFML/Network.hpp>
 #include "Enemy.h"
+
 using namespace sf;
 using namespace std;
 
@@ -36,6 +38,8 @@ private:
 	//Text
 	Text uiText1;
 	Text uiText2;
+	Text healthInfo;
+	Text pointsInfo;
 	Text centaurInfo;
 	Text goblinInfo;
 	Text zombieInfo;
@@ -44,6 +48,7 @@ private:
 	Text iceLevel;
 	Text hellLevel;
 	Text highscoreKillscreen;
+	Text highscoreInfo;
 
 	//Menu
 	RectangleShape menuBackground;
@@ -227,6 +232,7 @@ public:
 	const bool getEndGame() const;
 
 	//Public functions
+	void saveScore();
 	void spawnEnemy();
 	void pollEvents();
 	void updateMousePositions();

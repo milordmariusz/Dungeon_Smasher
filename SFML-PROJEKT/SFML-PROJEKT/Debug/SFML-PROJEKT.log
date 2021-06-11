@@ -1,51 +1,51 @@
 ﻿  Game.cpp
-C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(678,50): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(698,50): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(735,25): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
-C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(736,25): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
-C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(759,34): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(755,25): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(756,25): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(779,34): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(761,34): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(781,34): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(763,34): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(783,34): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(765,34): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(785,34): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(769,34): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(789,34): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(773,42): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(793,42): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(777,42): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(797,42): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(783,108): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(788,111): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(793,108): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(798,99): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(805,121): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(810,124): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(895,27): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(803,108): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(808,111): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(813,108): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(818,99): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(825,121): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(830,124): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
+C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(926,27): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
   SFML-PROJEKT.vcxproj -> C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\Debug\SFML-PROJEKT.exe
