@@ -125,7 +125,8 @@ private:
 	string gameState = "menu";
 	int pageCount = 1;
 	bool endGame;
-	unsigned points;
+	unsigned long long points;
+	unsigned specialEnemyRespCap;
 	int health;
 	float enemySpawnTimer;
 	float enemySpawnTimerMax;
@@ -137,12 +138,11 @@ private:
 
 	//enemies
 	std::vector<Enemy> enemies;
-	float animationSpeedMultiplier;
-	float speedMultiplier;
 	//zombie
 	Texture zombieWalkTexture;
 	Texture zombieAttackTexture;
-	Texture zombieHitTexture;
+	Texture zombieHellWalkTexture;
+	Texture zombieHellAttackTexture;
 	float zombieBaseSpeed;
 	float zombieAnimationSpeed;
 	float zombieValue;
@@ -150,7 +150,8 @@ private:
 	//centaur
 	Texture centaurWalkTexture;
 	Texture centaurAttackTexture;
-	Texture centaurHitTexture;
+	Texture centaurHellWalkTexture;
+	Texture centaurHellAttackTexture;
 	float centaurBaseSpeed;
 	float centaurValue;
 	float centaurAnimationSpeed;
@@ -158,7 +159,8 @@ private:
 	//orc
 	Texture orcWalkTexture;
 	Texture orcAttackTexture;
-	Texture orcHitTexture;
+	Texture orcHellWalkTexture;
+	Texture orcHellAttackTexture;
 	float orcBaseSpeed;
 	float orcAnimationSpeed;
 	float orcValue;
@@ -166,7 +168,8 @@ private:
 	//goblin
 	Texture goblinWalkTexture;
 	Texture goblinAttackTexture;
-	Texture goblinHitTexture;
+	Texture goblinHellWalkTexture;
+	Texture goblinHellAttackTexture;
 	float goblinBaseSpeed;
 	float goblinAnimationSpeed;
 	float goblinValue;
@@ -216,8 +219,6 @@ public:
 	void updateKillscreen();
 	void update();
 	void renderText(RenderTarget& target);
-	void renderWalls(RenderTarget& target);
-	void renderGround(RenderTarget& target);
 	void renderTiles(RenderTarget& target);
 	void renderEnemies(RenderTarget& target);
 	void render();

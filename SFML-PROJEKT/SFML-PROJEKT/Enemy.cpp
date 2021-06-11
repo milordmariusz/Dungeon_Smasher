@@ -1,12 +1,11 @@
 #include "Enemy.h"
 
-Enemy::Enemy(Texture* textureWalk, Vector2u walkCount, Texture* textureAttack, Vector2u attackCount, Texture* textureHit, Vector2u hitCount, float switchTime, float speed, Vector2f position, int pointValue, int attackPower)
-    :animationWalk(textureWalk, walkCount, switchTime), animationAttack(textureAttack, attackCount, switchTime), animationHit(textureHit, hitCount, switchTime)
+Enemy::Enemy(Texture* textureWalk, Vector2u walkCount, Texture* textureAttack, Vector2u attackCount, float switchTime, float speed, Vector2f position, int pointValue, int attackPower)
+    :animationWalk(textureWalk, walkCount, switchTime), animationAttack(textureAttack, attackCount, switchTime)
 {
     //variables
     this->walkTexture = textureWalk;
     this->attackTexture = textureAttack;
-    this->hitTexture = textureHit;
     this->speed = speed;
     this->state = 0;
     this->startPosition = position;
@@ -65,20 +64,11 @@ void Enemy::Update(float deltaTime)
         body.setTexture(attackTexture);
         animationAttack.Update(row, deltaTime);
         body.setTextureRect(animationAttack.uvRect);
-
         if (animationAttack.currentImage.x >= animationAttack.imageCount.x-1) //deleting enemy after attack
         {
             attackFinished = true;
         }
-
     }
-    else if (state == 2) ////setting animation to hit - future option - animation upon death
-    {
-        body.setTexture(hitTexture);
-        animationHit.Update(row, deltaTime);
-        body.setTextureRect(animationHit.uvRect);
-    }
-
 }
 
 void Enemy::Draw(sf::RenderWindow& window) //render enemy
