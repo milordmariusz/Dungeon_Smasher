@@ -98,6 +98,7 @@ private:
 	RectangleShape buttonHighscoreExit;
 	Texture buttonHighscoreExitTexture;
 	Texture buttonHighscoreExitActiveTexture;
+	vector<string> scores;
 
 	//Credits
 	RectangleShape CreditsBook;
@@ -125,7 +126,7 @@ private:
 	Texture groundTexture;
 	Texture groundHellTexture;
 	Texture groundIceTexture;
-	std::vector<RectangleShape> tiles;
+	vector<RectangleShape> tiles;
 	RectangleShape tile;
 	Texture tileTexture;
 	Texture tileIceTexture;

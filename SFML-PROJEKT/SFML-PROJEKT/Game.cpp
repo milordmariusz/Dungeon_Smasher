@@ -254,7 +254,7 @@ void Game::initBestiary() //initialize bestiary
 
 void Game::initHighscore() //initialize menu
 {
-	if (this->highscoreBackgroundTexture.loadFromFile("background/killscreen.png") == false) //Init book
+	if (this->highscoreBackgroundTexture.loadFromFile("background/highscoreBackground.png") == false) //Init book
 	{
 		cout << "ERROR::GAME::INITHIGHSCORE::Cannot load killscreen.png" << std::endl;
 	}
@@ -856,9 +856,51 @@ void Game::pollEvents() //Events
 	}
 }
 
-void Game::saveScore()
+void Game::saveScore() //save score algorithm
 {
+	scores.clear();
+	string line;
+	fstream file("highscore.txt", fstream::in | fstream::out | fstream::app);
+	if (file.is_open())
+	{
+		while (!file.eof())
+		{
+			getline(file, line);
+			this->scores.push_back(line);
+		}
+	}
+	file.close();
 
+	fstream file2("highscore.txt", ios::out);
+	bool saved = false;
+	string prevScore;
+
+	for (string e : this->scores)
+	{
+		stringstream ss(e);
+		int strAsInt;
+		ss >> strAsInt;
+		if (!saved)
+		{
+			if (points >= strAsInt)
+			{
+				saved = true;
+				file2 << to_string(points) << "\n";
+				prevScore = e;
+			}
+			else
+			{
+				file2 << e << "\n";
+			}
+		}
+		else
+		{
+			file2 << prevScore << "\n";
+			prevScore = e;
+		}
+	}
+
+	file2.close();
 }
 
 ///////////////////////////////////////////////////////////
@@ -1190,7 +1232,19 @@ void Game::updateHighscore()
 	}
 
 	stringstream hsi;
-	hsi << "1. " << endl << "2. " << endl << "3. " << endl;
+	string line;
+	int i = 1;
+	fstream file("highscore.txt", fstream::in | fstream::out | fstream::app);
+	if (file.is_open())
+	{
+		while (!file.eof() && i<=3)
+		{
+			getline(file, line);
+			hsi << i <<":  "<< line << endl;
+			i++;
+		}
+	}
+	file.close();
 	this->highscoreInfo.setString(hsi.str());
 	highscoreInfo.setOrigin(highscoreInfo.getLocalBounds().width / 2.0f, 0.0f);
 }
