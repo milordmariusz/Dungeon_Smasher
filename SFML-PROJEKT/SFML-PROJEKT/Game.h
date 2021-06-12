@@ -93,7 +93,6 @@ private:
 	RectangleShape buttonBestiaryExit;
 	Texture buttonBestiaryExitTexture;
 	Texture buttonBestiaryExitActiveTexture;
-
 	Sprite centaurBestiary;
 	Sprite goblinBestiary;
 	Sprite orcBestiary;
@@ -272,5 +271,12 @@ public:
 	void renderText(RenderTarget& target);
 	void renderTiles(RenderTarget& target);
 	void renderEnemies(RenderTarget& target);
-	void render();
+	void renderGame(RenderTarget& target);
+	void renderLevels(RenderTarget& target);
+	void renderMenu(RenderTarget& target);
+	void renderBestiary(RenderTarget& target);
+	void renderCredits(RenderTarget& target);
+	void renderHighscore(RenderTarget& target);
+	void renderKillscreen(RenderTarget& target);
+	void render();;
 };
