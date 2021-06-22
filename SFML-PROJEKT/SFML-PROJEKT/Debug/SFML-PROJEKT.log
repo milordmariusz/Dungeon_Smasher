@@ -48,6 +48,4 @@ C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(948
 C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(955,121): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
 C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(960,124): warning C4244: "argument": konwersja z "float" do "int", możliwa utrata danych
 C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Game.cpp(1099,27): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-  main.cpp
-  Generowanie kodu...
   SFML-PROJEKT.vcxproj -> C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\Debug\SFML-PROJEKT.exe

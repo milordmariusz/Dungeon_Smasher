@@ -881,7 +881,7 @@ Enemy name(walktexture, (number of walk frames x,number of walk frames y), attac
 		orcTexA = &orcIceAttackTexture;
 		goblinTexW = &goblinIceWalkTexture;
 		goblinTexA = &goblinIceAttackTexture;
-		animSpeed = animSpeed * 1.5;
+		animSpeed = animSpeed / 1.5;
 		moveSpeed = moveSpeed * 1.5;
 		value = value * 2;
 	}
