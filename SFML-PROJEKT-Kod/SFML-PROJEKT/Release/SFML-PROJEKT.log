@@ -1,0 +1,9 @@
+﻿  Enemy.cpp
+C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Enemy.cpp(36,11): warning C4101: "moveVectorY": lokalna zmienna, do której nie istnieje odwołanie
+C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\SFML-PROJEKT\Enemy.cpp(35,11): warning C4101: "moveVectorX": lokalna zmienna, do której nie istnieje odwołanie
+  Trwa generowanie kodu
+  5 of 464 functions ( 1.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Zakończono generowanie kodu
+  SFML-PROJEKT.vcxproj -> C:\Users\Arek\source\repos\PROGRAMOWANIE2\SFML-PROJEKT\Release\SFML-PROJEKT.exe
