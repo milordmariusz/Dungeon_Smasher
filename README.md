@@ -19,3 +19,5 @@ The game includes:
 - Increasing difficulty level with more points
 - Killscreen where we can see our result and choose to save it
 - Ingame sound
+
+Art made by: Krishna Palacio
