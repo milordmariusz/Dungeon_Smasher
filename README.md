@@ -1,7 +1,7 @@
 # Dungeon_Smasher
 
 <p float="center">
-  <img src="/ss.png" width="250" /> 
+  <img src="/ss.png"/> 
 </p>
 
 Dungeon Smasher is an aim training game in which you have to defend yourself 
