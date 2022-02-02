@@ -1,5 +1,9 @@
 # Dungeon_Smasher
 
+<p float="center">
+  <img src="/ss.png" width="250" /> 
+</p>
+
 Dungeon Smasher is an aim training game in which you have to defend yourself 
 against incoming monsters by accurately clicking on them.
 
